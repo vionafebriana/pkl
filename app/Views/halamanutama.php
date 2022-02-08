@@ -17,29 +17,29 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#informasi"> Informasi
+                    <a class="nav-link" href="#informasi">Informasi
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#alur"> Alur Pendaftaran
+                    <a class="nav-link" href="#alur">Alur Pendaftaran
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#profil"> Profil BPS
+                    <a class="nav-link" href="#profil">Profil BPS
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#kontak"> Kontak
+                    <a class="nav-link" href="#kontak">Kontak
                     </a>
                 </li>
                 <?php if(!session()->log): ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url('AuthGoogle'); ?>"> Login
+                    <a class="nav-link" href="<?= base_url('AuthGoogle'); ?>">Login
                     </a>
                 </li>
                 <?php else: ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url('AuthGoogle/logout'); ?>"> Logout
+                        <a class="nav-link" href="<?= base_url('AuthGoogle/logout'); ?>">Logout
                         </a>
                     </li>
                 <?php endif ?>
@@ -65,48 +65,6 @@
                 </div>
             </div>
             <!-- End Logo -->
-            <hr>
-
-            <!-- ======= Login & Daftar======= -->
-            <div class="row simple-cards users-card justify-content-center p-sm-5">
-                <div class="col-lg-3 col-xs-8 card-login" id="login-peserta">
-                    <div id="container-peserta">
-                        <div class="card user-card" data-toggle="modal" data-target="#modal-peserta">
-                            <div class="card-header-img text-center">
-                                <a href="<?= base_url('Login'); ?>">
-                                    <img class="img-fluid rounded-circle p-sm-3" src="/assets/img/peserta.png">
-                                    <h4 style="font-size:25px;">Peserta PKL</h4>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-xs-8 card-login" id="login-pembimbing">
-                    <div id="container-pembimbing">
-                        <div class="card user-card " data-toggle="modal" data-target="#modal-pembimbing">
-                            <div class="card-header-img text-center">
-                                <a href="<?= base_url('Login'); ?>">
-                                    <img class="img-fluid rounded-circle p-sm-3" src="/assets/img/pembimbing.png">
-                                    <h4 style="font-size:25px;">Pembimbing Lapangan</h4>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-xs-8 card-login" id="login-daftar">
-                    <div id="container-daftar">
-                        <div class="card user-card" data-toggle="modal" data-target="#modal-daftar">
-                            <div class="card-header-img text-center">
-                                <a href="<?= base_url('Registrasi'); ?>">
-                                    <img class="img-fluid rounded-circle p-sm-3" src="/assets/img/pendaftaran.png">
-                                    <h4 style="font-size:25px;">Pendaftaran PKL</h4>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Login & Daftar -->
             <hr>
 
             <!-- ======= Informasi ======= -->
