@@ -1,0 +1,11 @@
+Cara install project :
+1. Copy project ini ke komputer yang akan digunakan
+2. Nyalakan Xampp atau lainnya
+3. Buka database dan import 'simpentra2022.sql'
+4. Project siap dikembangkan! ^^
+
+Catatan Login Admin :
+email : admin@gmail.com
+pass : default
+
+jika menambahkan user tanpa password, maka password defaultnya adalah 'default'

@@ -1,0 +1,20 @@
+---
+title: "coba"
+author: "Erik Rihendri Candra Adifa"
+date: "1/29/2022"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+```{r}
+library(readxl)
+data <- read_excel("C:/Users/ACER/Downloads/datacfrcgrjatim_fix Ya Allah.xlsx")
+data <- as.matrix(data)
+
+
+```
