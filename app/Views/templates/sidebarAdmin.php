@@ -14,7 +14,7 @@
 
     <!-- Nav Item - Beranda -->
     <li class="nav-item">
-        <a class="nav-link" href="Peserta">
+        <a class="nav-link" href="Home">
             <i class="fa fa-home"></i>
             <span>Beranda</span></a>
     </li>
@@ -24,22 +24,22 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Kehadiran
+        Master Data
     </div>
 
     <!-- Nav Item - absensi Menu -->
     <li class="nav-item">
-        <a class="nav-link" href="Absensi">
+        <a class="nav-link" href="">
             <i class="fa fa-edit"></i>
-            <span>Absensi</span>
+            <span>Data Pembimbing</span>
         </a>
     </li>
 
     <!-- Nav Item - Laporan aktivitas harian Menu -->
     <li class="nav-item">
-        <a class="nav-link" href="AktivitasHarian">
+        <a class="nav-link" href="">
             <i class="fa fa-folder-open"></i>
-            <span>Laporan Aktivitas Harian</span>
+            <span>Data Peserta</span>
         </a>
     </li>
 

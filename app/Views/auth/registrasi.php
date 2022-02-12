@@ -11,7 +11,7 @@
                         <div class="form-group">
                             <label for="inputNama">Nama</label><small class="text-danger">*</small><br>
                             <input type="text" class="form-control " id="inputNama" placeholder="Nama Lengkap" name="nama">
-                            <?= ($val->hasError('nama')) ? '<small class="text-danger">' .$val->getError('nama'). '</small>' : ''; ?>
+                            <?= ($val->hasError('nama')) ? '<small class="text-danger">' . $val->getError('nama') . '</small>' : ''; ?>
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
@@ -24,19 +24,17 @@
                             <div class="col-sm-6">
                                 <label for="inputTanggalLahir">Tanggal Lahir</label><small class="text-danger">*</small><br>
                                 <input type="date" class="form-control " id="inputTanggalLahir" placeholder="Tanggal Lahir" name="tglLahir">
-                                <?= ($val->hasError('tglLahir')) ? '<small class="text-danger">' .$val->getError('tglLahir'). '</small>' : ''; ?>
+                                <?= ($val->hasError('tglLahir')) ? '<small class="text-danger">' . $val->getError('tglLahir') . '</small>' : ''; ?>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputEmail">Email</label><br>
                             <input type="email" class="form-control " id="inputEmail" placeholder="Alamat Email" name="email" readonly value="<?= session()->email; ?>">
-                            <?= ($val->hasError('email')) ? '<small class="text-danger">' .$val->getError('email'). '</small>' : ''; ?>
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <label for="inputPassword">Kata Sandi</label><br>
                                 <input type="password" class="form-control " id="inputPassword" placeholder="Kata Sandi" name="password">
-                                <?= ($val->hasError('password')) ? '<small class="text-danger">' .$val->getError('password'). '</small>' : ''; ?>
                             </div>
                             <div class="col-sm-6">
                                 <label for="repeatPassword">Ulangi Kata Sandi</label><br>
@@ -46,25 +44,30 @@
                         <div class="form-group">
                             <label for="inputInstansi">Instansi/Sekolah Asal</label><br>
                             <input type="text" class="form-control " id="inputInstansi" placeholder="Instansi/Sekolah Asal" name="instansi">
+                            <?= ($val->hasError('instansi')) ? '<small class="text-danger">' . $val->getError('instansi') . '</small>' : ''; ?>
                         </div>
                         Pelaksanaan PKL
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <label for="inputMulai">Dari</label><br>
                                 <input type="date" class="form-control " id="inputMulai" placeholder="Dari" name="startDate">
+                                <?= ($val->hasError('startDate')) ? '<small class="text-danger">' . $val->getError('startDate') . '</small>' : ''; ?>
                             </div>
                             <div class="col-sm-6">
                                 <label for="inputSelesai">Sampai</label><br>
                                 <input type="date" class="form-control " id="inputSelesai" placeholder="Sampai" name="endDate">
+                                <?= ($val->hasError('endDate')) ? '<small class="text-danger">' . $val->getError('endDate') . '</small>' : ''; ?>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputSuratPengantar">Dokumen Surat Pengantar</label><br>
                             <input type="file" id="inputSuratPengantar" placeholder="Dokumen Surat Pengantar" name="pengantar">
+                            <?= ($val->hasError('pengantar')) ? '<small class="text-danger">' . $val->getError('pengantar') . '</small>' : ''; ?>
                         </div>
                         <div class="form-group">
                             <label for="inputProposal">Dokumen Proposal</label><br>
                             <input type="file" id="inputProposal" placeholder="Dokumen Proposal" name="proposal">
+                            <?= ($val->hasError('proposal')) ? '<small class="text-danger">' . $val->getError('proposal') . '</small>' : ''; ?>
                         </div>
                         <button class="btn btn-primary btn-user btn-block" name="submit" type="submit">
                             Ajukan Pendaftaran

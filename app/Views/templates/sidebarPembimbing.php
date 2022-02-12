@@ -14,7 +14,7 @@
 
     <!-- Nav Item - Beranda -->
     <li class="nav-item">
-        <a class="nav-link" href="Peserta">
+        <a class="nav-link" href="Home">
             <i class="fa fa-home"></i>
             <span>Beranda</span></a>
     </li>
@@ -24,14 +24,14 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Kehadiran
+        User
     </div>
 
     <!-- Nav Item - absensi Menu -->
     <li class="nav-item">
         <a class="nav-link" href="Absensi">
             <i class="fa fa-edit"></i>
-            <span>Absensi</span>
+            <span>Manage User</span>
         </a>
     </li>
 

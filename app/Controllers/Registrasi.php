@@ -9,7 +9,7 @@ class Registrasi extends BaseController
 {
     public function index()
     {
-        if(!session()->regist){
+        if (!session()->regist) {
             return redirect()->to(base_url('Home'));
         }
         $data = [
@@ -17,8 +17,8 @@ class Registrasi extends BaseController
         ];
 
         if (isset($_POST['submit'])) {
-
-            if (! $this->validate([
+            // validasi pendaftaran    
+            if (!$this->validate([
                 'nama' => [
                     'rules' => 'required',
                     'errors' => [
@@ -28,21 +28,28 @@ class Registrasi extends BaseController
                 'JK' => [
                     'rules' => 'required',
                     'errors' => [
-                        'required' => 'jenis kelamin harus diisi'
+                        'required' => 'Jenis Kelamin harus diisi'
                     ]
                 ],
-                'tglLahir' => 'required',
-                'email'    => [
-                    'rules' => 'required|valid_email',
+                'tglLahir' => [
+                    'rules' => 'required',
                     'errors' => [
-                        'required' => 'email harus diisi',
-                        'valid_email' => 'email tidak valid'
+                        'required' => 'tanggal lahir harus diisi'
                     ]
                 ],
-                'password' => 'required',
-                'rePassword' => 'required',
-                'instansi'    => 'required',
-                'startDate' => 'required',
+                'email'    => 'required|valid_email',
+                'instansi'    => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'instansi/sekolah asal harus diisi'
+                    ]
+                ],
+                'startDate' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'tanggal mulai harus diisi'
+                    ]
+                ],
                 'endDate' => 'required',
                 'pengantar' => 'uploaded[pengantar]',
                 'proposal' => 'uploaded[proposal]',
@@ -76,7 +83,7 @@ class Registrasi extends BaseController
                 'pengantar' => $nama_pengantar,
                 'proposal' => $nama_proposal
             ];
-            
+
             //Menyimpan file yang diupload kedalam file assets
             $pengantar->move('./assets/dokumen pengantar/', $nama_pengantar);
             $proposal->move('./assets/dokumen proposal/', $nama_proposal);
