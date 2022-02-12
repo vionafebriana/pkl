@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 08, 2022 at 02:03 PM
+-- Generation Time: Feb 12, 2022 at 03:36 AM
 -- Server version: 10.4.16-MariaDB
 -- PHP Version: 7.4.12
 
@@ -20,6 +20,30 @@ SET time_zone = "+00:00";
 --
 -- Database: `simag`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `absen`
+--
+
+CREATE TABLE `absen` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `datang` time NOT NULL,
+  `pulang` time NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `deleted_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `absen`
+--
+
+INSERT INTO `absen` (`id`, `user_id`, `date`, `datang`, `pulang`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(4, 28, '2022-02-11', '20:34:35', '20:37:13', '2022-02-11 20:34:35', '2022-02-11 20:37:13', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -58,7 +82,6 @@ CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `nama` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `password` varchar(256) NOT NULL,
   `jenisKelamin` int(1) NOT NULL,
   `tglLahir` date NOT NULL,
   `role` int(11) NOT NULL,
@@ -72,12 +95,20 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `nama`, `email`, `password`, `jenisKelamin`, `tglLahir`, `role`, `created_at`, `deleted_at`, `updated_at`, `status`) VALUES
-(26, 'erik', 'erca.rihendri@gmail.com', 'erca2005', 1, '2022-02-17', 3, '2022-02-07 22:22:47', '0000-00-00 00:00:00', '2022-02-07 22:22:47', 1);
+INSERT INTO `user` (`id`, `nama`, `email`, `jenisKelamin`, `tglLahir`, `role`, `created_at`, `deleted_at`, `updated_at`, `status`) VALUES
+(26, 'erik', 'erca.rihendri@gmail.com', 1, '2022-02-17', 3, '2022-02-07 22:22:47', '0000-00-00 00:00:00', '2022-02-07 22:22:47', 1),
+(27, 'admin', '221810647@stis.ac.id', 2, '0000-00-00', 1, '2022-02-08 07:43:42', '0000-00-00 00:00:00', '2022-02-08 07:43:42', 1),
+(28, 'admin', '221810270@stis.ac.id', 1, '0000-00-00', 1, '2022-02-08 07:44:27', '0000-00-00 00:00:00', '2022-02-08 07:44:27', 1);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `absen`
+--
+ALTER TABLE `absen`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `info_peserta`
@@ -96,6 +127,12 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `absen`
+--
+ALTER TABLE `absen`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `info_peserta`
 --
 ALTER TABLE `info_peserta`
@@ -105,7 +142,7 @@ ALTER TABLE `info_peserta`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
