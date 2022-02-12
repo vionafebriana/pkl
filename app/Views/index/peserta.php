@@ -29,7 +29,7 @@
             </div>
             <div class="row justify-content-center text-center">
                 <div class="card bg-c-white">
-                    <h4 style="font-size:25px;">Absen</h4>
+                    <button class="btn btn-mute" id="absen" style="font-size:25px;">Absen</button>
                 </div>
             </div>
         </div>
@@ -51,17 +51,17 @@
             <!-- Status -->
             <hr>
             <div class="row justify-content-center">
-                <h5>Anda belum melakukan absensi!</h5>
+                <h5 id="message">Anda belum melakukan absensi!</h5>
             </div>
             <!-- Start time End time -->
             <div class="row justify-content-center p-1">
                 <div class="col text-center ">
                     <h4>START TIME</h4>
-                    <h3>-- : --</h3>
+                    <h3 id="start-time">-- : --</h3>
                 </div>
                 <div class="col text-center ">
                     <h4>END TIME</h4>
-                    <h3>-- : --</h3>
+                    <h3 id="end-time">-- : --</h3>
                 </div>
             </div>
         </div>

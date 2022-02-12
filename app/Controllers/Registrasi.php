@@ -25,9 +25,20 @@ class Registrasi extends BaseController
                         'required' => 'nama harus diisi'
                     ]
                 ],
-                'JK' => 'required',
+                'JK' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'jenis kelamin harus diisi'
+                    ]
+                ],
                 'tglLahir' => 'required',
-                'email'    => 'required|valid_email',
+                'email'    => [
+                    'rules' => 'required|valid_email',
+                    'errors' => [
+                        'required' => 'email harus diisi',
+                        'valid_email' => 'email tidak valid'
+                    ]
+                ],
                 'password' => 'required',
                 'rePassword' => 'required',
                 'instansi'    => 'required',
