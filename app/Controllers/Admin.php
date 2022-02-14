@@ -16,7 +16,7 @@ class Admin extends BaseController
         $pembimbing = $userModel->where('role', 2)->countAllResults();
 
         $data = [
-            'judul' => 'BERANDA',
+            'judul' => 'HALAMAN ADMIN',
             'pesertaAktif' => $pesertaAktif,
             'pesertaDeaktif' => $pesertaDeaktif,
             'pembimbing' => $pembimbing

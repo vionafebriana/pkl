@@ -16,13 +16,6 @@
         </header>
         <!-- Main page content-->
         <div class="container-xl px-4 mt-4">
-            <!-- Account page navigation-->
-            <nav class="nav nav-borders">
-                <a class="nav-link active ms-0" href="account-profile.html">Profile</a>
-                <a class="nav-link" href="account-billing.html">Billing</a>
-                <a class="nav-link" href="account-security.html">Security</a>
-                <a class="nav-link" href="account-notifications.html">Notifications</a>
-            </nav>
             <hr class="mt-0 mb-4" />
             <div class="row">
                 <div class="col-xl-4">
@@ -31,7 +24,7 @@
                         <div class="card-header">Profile Picture</div>
                         <div class="card-body text-center">
                             <!-- Profile picture image-->
-                            <img class="img-account-profile rounded-circle mb-2" src="assets/img/illustrations/profiles/profile-1.png" alt="" />
+                            <img class="img-account-profile rounded-circle mb-2" src="assets/img/peserta.png" style="width:60%;" alt="" />
                             <!-- Profile picture help block-->
                             <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
                             <!-- Profile picture upload button-->
@@ -45,56 +38,60 @@
                         <div class="card-header">Account Details</div>
                         <div class="card-body">
                             <form>
-                                <!-- Form Group (username)-->
-                                <div class="mb-3">
-                                    <label class="small mb-1" for="inputUsername">Username (how your name will appear to other users on the site)</label>
-                                    <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username" value="username" />
+                                <div class="form-group">
+                                    <label for="inputNama">Nama Lengkap</label><br>
+                                    <input type="text" class="form-control " id="inputNama" placeholder="Nama Lengkap" name="nama">
                                 </div>
-                                <!-- Form Row-->
-                                <div class="row gx-3 mb-3">
-                                    <!-- Form Group (first name)-->
-                                    <div class="col-md-6">
-                                        <label class="small mb-1" for="inputFirstName">First name</label>
-                                        <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" value="Valerie" />
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <label for="inputJK">Jenis Kelamin</label><br>
+                                        <select class="form-control" id="inputJK" placeholder="Jenis Kelamin" name="JK">
+                                            <option value="1">Laki-Laki</option>
+                                            <option value="2">Perempuan</option>
+                                        </select>
                                     </div>
-                                    <!-- Form Group (last name)-->
-                                    <div class="col-md-6">
-                                        <label class="small mb-1" for="inputLastName">Last name</label>
-                                        <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" value="Luna" />
-                                    </div>
-                                </div>
-                                <!-- Form Row        -->
-                                <div class="row gx-3 mb-3">
-                                    <!-- Form Group (organization name)-->
-                                    <div class="col-md-6">
-                                        <label class="small mb-1" for="inputOrgName">Organization name</label>
-                                        <input class="form-control" id="inputOrgName" type="text" placeholder="Enter your organization name" value="Start Bootstrap" />
-                                    </div>
-                                    <!-- Form Group (location)-->
-                                    <div class="col-md-6">
-                                        <label class="small mb-1" for="inputLocation">Location</label>
-                                        <input class="form-control" id="inputLocation" type="text" placeholder="Enter your location" value="San Francisco, CA" />
+                                    <div class="col-sm-6">
+                                        <label for="inputTanggalLahir">Tanggal Lahir</label><br>
+                                        <input type="date" class="form-control " id="inputTanggalLahir" placeholder="Tanggal Lahir" name="tglLahir">
                                     </div>
                                 </div>
-                                <!-- Form Group (email address)-->
-                                <div class="mb-3">
-                                    <label class="small mb-1" for="inputEmailAddress">Email address</label>
-                                    <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" value="name@example.com" />
+                                <div class="form-group">
+                                    <label for="inputEmail">Email</label><br>
+                                    <input type="email" class="form-control " id="inputEmail" placeholder="Alamat Email" name="email" readonly value="<?= session()->email; ?>">
                                 </div>
-                                <!-- Form Row-->
-                                <div class="row gx-3 mb-3">
-                                    <!-- Form Group (phone number)-->
-                                    <div class="col-md-6">
-                                        <label class="small mb-1" for="inputPhone">Phone number</label>
-                                        <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" value="555-123-4567" />
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <label for="inputPassword">Kata Sandi</label><br>
+                                        <input type="password" class="form-control " id="inputPassword" placeholder="Kata Sandi" name="password">
                                     </div>
-                                    <!-- Form Group (birthday)-->
-                                    <div class="col-md-6">
-                                        <label class="small mb-1" for="inputBirthday">Birthday</label>
-                                        <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Enter your birthday" value="06/10/1988" />
+                                    <div class="col-sm-6">
+                                        <label for="repeatPassword">Ulangi Kata Sandi</label><br>
+                                        <input type="password" class="form-control " id="repeatPassword" placeholder="Ulangi Kata Sandi" name="rePassword">
                                     </div>
                                 </div>
-                                <!-- Save changes button-->
+                                <div class="form-group">
+                                    <label for="inputInstansi">Instansi/Sekolah Asal</label><br>
+                                    <input type="text" class="form-control " id="inputInstansi" placeholder="Instansi/Sekolah Asal" name="instansi">
+                                </div>
+                                Pelaksanaan PKL
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <label for="inputMulai">Dari</label><br>
+                                        <input type="date" class="form-control " id="inputMulai" placeholder="Dari" name="startDate">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="inputSelesai">Sampai</label><br>
+                                        <input type="date" class="form-control " id="inputSelesai" placeholder="Sampai" name="endDate">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputSuratPengantar">Dokumen Surat Pengantar</label><br>
+                                    <input type="file" id="inputSuratPengantar" placeholder="Dokumen Surat Pengantar" name="pengantar">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputProposal">Dokumen Proposal</label><br>
+                                    <input type="file" id="inputProposal" placeholder="Dokumen Proposal" name="proposal">
+                                </div> <!-- Save changes button-->
                                 <button class="btn btn-primary" type="button">Save changes</button>
                             </form>
                         </div>

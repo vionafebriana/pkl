@@ -18,10 +18,14 @@
                             <th>Jam Selesai</th>
                         </tr>
                     </thead>
-                    <tfoot>
-                    </tfoot>
                     <tbody>
-
+                        <?php foreach ($absen as $key => $value) : ?>
+                            <tr>
+                                <td><?= $value['date']; ?></td>
+                                <td><?= $value['datang']; ?></td>
+                                <td><?= $value['pulang']; ?></td>
+                            </tr>
+                        <?php endforeach ?>
                     </tbody>
                 </table>
             </div>

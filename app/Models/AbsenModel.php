@@ -14,7 +14,7 @@ class AbsenModel extends Model
     protected $returnType     = 'array';
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['user_id', 'datang', 'pulang', 'date', 'proposal'];
+    protected $allowedFields = ['user_id', 'datang', 'pulang', 'date'];
 
     protected $useTimestamps = true;
     protected $createdField  = 'created_at';
