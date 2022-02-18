@@ -24,7 +24,7 @@
                         <div class="card-header">Profile Picture</div>
                         <div class="card-body text-center">
                             <!-- Profile picture image-->
-                            <img class="img-account-profile rounded-circle mb-2" src="assets/img/peserta.png" style="width:60%;" alt="" />
+                            <img class="img-account-profile rounded-circle mb-2" src="<?= $user['foto']; ?>" style="width:60%;" alt="" />
                             <!-- Profile picture help block-->
                             <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
                             <!-- Profile picture upload button-->
@@ -37,63 +37,35 @@
                     <div class="card mb-4">
                         <div class="card-header">Account Details</div>
                         <div class="card-body">
-                            <form>
-                                <div class="form-group">
-                                    <label for="inputNama">Nama Lengkap</label><br>
-                                    <input type="text" class="form-control " id="inputNama" placeholder="Nama Lengkap" name="nama">
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <label for="inputJK">Jenis Kelamin</label><br>
-                                        <select class="form-control" id="inputJK" placeholder="Jenis Kelamin" name="JK">
-                                            <option value="1">Laki-Laki</option>
-                                            <option value="2">Perempuan</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label for="inputTanggalLahir">Tanggal Lahir</label><br>
-                                        <input type="date" class="form-control " id="inputTanggalLahir" placeholder="Tanggal Lahir" name="tglLahir">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputEmail">Email</label><br>
-                                    <input type="email" class="form-control " id="inputEmail" placeholder="Alamat Email" name="email" readonly value="<?= session()->email; ?>">
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <label for="inputPassword">Kata Sandi</label><br>
-                                        <input type="password" class="form-control " id="inputPassword" placeholder="Kata Sandi" name="password">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label for="repeatPassword">Ulangi Kata Sandi</label><br>
-                                        <input type="password" class="form-control " id="repeatPassword" placeholder="Ulangi Kata Sandi" name="rePassword">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputInstansi">Instansi/Sekolah Asal</label><br>
-                                    <input type="text" class="form-control " id="inputInstansi" placeholder="Instansi/Sekolah Asal" name="instansi">
-                                </div>
-                                Pelaksanaan PKL
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <label for="inputMulai">Dari</label><br>
-                                        <input type="date" class="form-control " id="inputMulai" placeholder="Dari" name="startDate">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label for="inputSelesai">Sampai</label><br>
-                                        <input type="date" class="form-control " id="inputSelesai" placeholder="Sampai" name="endDate">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputSuratPengantar">Dokumen Surat Pengantar</label><br>
-                                    <input type="file" id="inputSuratPengantar" placeholder="Dokumen Surat Pengantar" name="pengantar">
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputProposal">Dokumen Proposal</label><br>
-                                    <input type="file" id="inputProposal" placeholder="Dokumen Proposal" name="proposal">
-                                </div> <!-- Save changes button-->
-                                <button class="btn btn-primary" type="button">Save changes</button>
-                            </form>
+                            <table class="table m-0">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Nama Lengkap</th>
+                                        <td><?= $user['nama']; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Jenis Kelamin</th>
+                                        <td><?= $user['jenisKelamin']; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Tanggal Lahir</th>
+                                        <td><?= $user['tglLahir']; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Email</th>
+                                        <td><?= $user['email']; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Instansi/Sekolah Asal</th>
+                                        <td><?= $user['instansi']; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Pelaksanaan PKL</th>
+                                        <td><?= $user['startDate']; ?> sampai <?= $user['endDate']; ?></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
                         </div>
                     </div>
                 </div>

@@ -18,7 +18,6 @@ class Home extends BaseController
         }
 
         $data = [
-            'judul' => 'HALAMAN UTAMA',
             'user' => $user
         ];
 

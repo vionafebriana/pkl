@@ -10,7 +10,7 @@
                     <i class="fa fa-user"></i>
                     <div class="p-3">
                         <h4>
-                            <span class="m-b-5 font-weight-bold">Selamat Datang, Viona Febriana!</span>
+                            <span class="m-b-5 font-weight-bold">Selamat Datang, <?= session()->nama; ?></span>
                         </h4>
                     </div>
                 </div>
@@ -48,20 +48,6 @@
                 </div>
             </div>
         </div>
-
-        <div class="col col-xl-5 col-md-12">
-            <div class="row col-md-12">
-                <div class="card bg-c-white m-3">
-                    <h4>Tingkat Kehadiran</h4>
-                    <div class="card-body">
-                        <div class="chart-pie">
-                            <canvas id="kehadiran"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
 
     </div>
     <!-- /.container-fluid -->

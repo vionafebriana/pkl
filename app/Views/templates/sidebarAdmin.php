@@ -2,7 +2,7 @@
 <ul class="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="admin">
         <div class="sidebar-brand-icon rotate-n-15">
             <img style="width:50px" src="/assets/img/logobps.png" alt="Logo">
         </div>
@@ -43,30 +43,21 @@
         </a>
     </li>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Profil
-    </div>
-
-    <!-- Nav Item - Profil Menu -->
+    <!-- Nav Item - Laporan aktivitas harian Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="Profil">
-            <i class="fa fa-user"></i>
-            <span>Profil</span>
+        <a class="nav-link" href="">
+            <i class="fa fa-folder-open"></i>
+            <span>Laporan Absensi</span>
         </a>
     </li>
 
-    <!-- Nav Item - Edit Profil Menu -->
+    <!-- Nav Item - Laporan aktivitas harian Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="EditProfil ">
-            <i class="fas fa fa-cog"></i>
-            <span>Edit Profil</span>
+        <a class="nav-link" href="">
+            <i class="fa fa-folder-open"></i>
+            <span>Laporan Aktivitas Harian</span>
         </a>
     </li>
-
     <!-- Divider -->
     <hr class="sidebar-divider">
     <li class="nav-item">

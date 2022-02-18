@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\AbsenModel;
+use App\Models\UserModel;
 use CodeIgniter\API\ResponseTrait;
 
 class Peserta extends BaseController
@@ -16,12 +17,7 @@ class Peserta extends BaseController
 
     public function index()
     {
-        $data = [
-            'judul' => 'Homepage'
-        ];
-
-
-        echo view('templates/header', $data);
+        echo view('templates/header');
         echo view('templates/sidebar');
         echo view('templates/topbar');
         echo view('index/peserta');
@@ -34,14 +30,14 @@ class Peserta extends BaseController
         $dateNow = strtotime(date('Y-m-d'));
         $timeNow = strtotime(date('H:i:s'));
 
-        $pagi = [strtotime('07:00:00') , strtotime('08:00:00')];
-        $sore = [strtotime('10:00:00') , strtotime('16:10:00')];
+        $pagi = [strtotime('07:00:00'), strtotime('08:00:00')];
+        $sore = [strtotime('10:00:00'), strtotime('16:30:00')];
 
         $user = session()->id;
         $absenModel = new AbsenModel();
-        $absen = $absenModel->where('date' , date('Y-m-d'))->where('user_id' , $user)->get()->getRowArray();
-        if($timeNow>$pagi[0] && $timeNow<$pagi[1]){
-            if(!$absen){
+        $absen = $absenModel->where('date', date('Y-m-d'))->where('user_id', $user)->get()->getRowArray();
+        if ($timeNow > $pagi[0] && $timeNow < $pagi[1]) {
+            if (!$absen) {
                 $absenModel->insert([
                     'user_id' => $user,
                     'date' => date('Y-m-d'),
@@ -51,30 +47,30 @@ class Peserta extends BaseController
                     'type' => 1,
                     'message' => 'absen pagi'
                 ]);
-            }else{
+            } else {
                 return $this->respond([
                     'type' => 3,
                     'message' => 'sudah absen pagi'
                 ]);
             }
         }
-        
-        if($timeNow>$sore[0] && $timeNow<$sore[1]){
-            if($absen){
-                if($absen['pulang']=='00:00:00'){
-                    $absenModel->set('pulang' , date('H:i:s'))->where('id' , $absen['id'])->where('user_id' , $user)->update();
+
+        if ($timeNow > $sore[0] && $timeNow < $sore[1]) {
+            if ($absen) {
+                if ($absen['pulang'] == '00:00:00') {
+                    $absenModel->set('pulang', date('H:i:s'))->where('id', $absen['id'])->where('user_id', $user)->update();
                     return $this->respond([
                         'type' => 2,
                         'message' => 'absen sore'
                     ]);
-                }else{
-                    $absenModel->set('pulang' , date('H:i:s'))->where('id' , $absen['id'])->where('user_id' , $user)->update();
+                } else {
+                    $absenModel->set('pulang', date('H:i:s'))->where('id', $absen['id'])->where('user_id', $user)->update();
                     return $this->respond([
                         'type' => 4,
                         'message' => 'anda sudah absen sore'
                     ]);
                 }
-            }else{
+            } else {
                 $absenModel->insert([
                     'user_id' => $user,
                     'date' => date('Y-m-d'),
@@ -87,19 +83,18 @@ class Peserta extends BaseController
             }
         }
 
-        if(!$absen){
+        if (!$absen) {
             return $this->respond([
                 'type' => 5,
                 'message' => 'anda terlambat',
                 $absen
             ]);
-        }else{
+        } else {
             return $this->respond([
                 'type' => 6,
                 'message' => 'anda sudah absen hari ini'
             ]);
         }
-
     }
 
     public function getAbsen()
@@ -108,8 +103,8 @@ class Peserta extends BaseController
         $date = date('Y-m-d');
         $user = session()->id;
         $absenModel = new AbsenModel();
-        $respond = $absenModel->where('date' , $date)->where('user_id' , $user)->get()->getRowArray();
-        if($respond) {
+        $respond = $absenModel->where('date', $date)->where('user_id', $user)->get()->getRowArray();
+        if ($respond) {
             return $this->respond($respond);
         }
         return $this->respond([]);

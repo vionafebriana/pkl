@@ -13,10 +13,8 @@ class Absensi extends BaseController
         $absen = $absenModel->where('user_id', $user)->get()->getResultArray();
 
         $data = [
-            'judul' => 'ABSENSI',
             'absen' => $absen
         ];
-
 
         echo view('templates/header', $data);
         echo view('templates/sidebar');

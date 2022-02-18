@@ -62,7 +62,6 @@ class Registrasi extends BaseController
                 'jenisKelamin' => $this->request->getPost('JK'),
                 'tglLahir' => $this->request->getPost('tglLahir'),
                 'email' => $this->request->getPost('email'),
-                'password' => $this->request->getPost('password'),
                 'role' => 3,
                 'status' => 1
             ];

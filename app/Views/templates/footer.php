@@ -44,6 +44,14 @@
 <script src="/assets/js/clock.js"></script>
 <script src="/assets/js/absen.js"></script>
 
+<script type="text/javascript" charset="utf8" src="https://releases.jquery.com/git/jquery-3.x-git.js"></script>
+<script type="text/javascript" charset="utf8" src="/assets/js/demo/datatables-demo.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#dataTable').DataTable();
+    });
+</script>
 </body>
 
 </html>

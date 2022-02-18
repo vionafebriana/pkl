@@ -12,7 +12,7 @@ class Pembimbing extends BaseController
 
 
         echo view('templates/header', $data);
-        echo view('templates/sidebar');
+        echo view('templates/sidebarPembimbing');
         echo view('templates/topbar');
         echo view('index/pembimbing');
         echo view('templates/footer');

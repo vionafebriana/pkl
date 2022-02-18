@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" type="image/png" href="/assets/img/logobps.png">
-    <title>SIMAG BPS KOTA MALANG | <?= $judul; ?></title>
+    <title>SIMAG BPS KOTA MALANG</title>
 
     <!-- Custom fonts for this template-->
     <link href="/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -20,6 +20,8 @@
     <link href="/assets/css/timeline.css" rel="stylesheet">
 
     <link href="/assets/css/timer.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/datatables.css">
 </head>
 
 <body id="page-top">

@@ -32,12 +32,13 @@
                     <a class="nav-link" href="#kontak">Kontak
                     </a>
                 </li>
-                <?php if(!session()->log): ?>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url('AuthGoogle'); ?>">Login
-                    </a>
-                </li>
-                <?php else: ?>
+                <div class="topbar-divider d-none d-sm-block"></div>
+                <?php if (!session()->log) : ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url('AuthGoogle'); ?>">Login
+                        </a>
+                    </li>
+                <?php else : ?>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('AuthGoogle/logout'); ?>">Logout
                         </a>
