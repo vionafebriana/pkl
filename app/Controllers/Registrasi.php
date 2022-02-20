@@ -70,19 +70,17 @@ class Registrasi extends BaseController
             $proposal = $this->request->getFile('proposal');
             $nama_pengantar = $pengantar->getName();
             $nama_proposal = $proposal->getName();
-
+            //Menyimpan file yang diupload kedalam file assets
+            $pengantar->move('./assets/dokumen pengantar/' . $user_id, $nama_pengantar);
+            $proposal->move('./assets/dokumen proposal/' . $user_id, $nama_proposal);
             $info_peserta = [
                 'instansi' => $this->request->getPost('instansi'),
                 'startDate' => $this->request->getPost('startDate'),
                 'endDate' => $this->request->getPost('endDate'),
                 'userId' => $user_id,
-                'pengantar' => $nama_pengantar,
-                'proposal' => $nama_proposal
+                'pengantar' => '/assets/dokumen pengantar/' . $user_id . '/' . $nama_pengantar,
+                'proposal' => '/assets/dokumen proposal/' . $user_id . '/' . $nama_proposal
             ];
-
-            //Menyimpan file yang diupload kedalam file assets
-            $pengantar->move('./assets/dokumen pengantar/', $nama_pengantar);
-            $proposal->move('./assets/dokumen proposal/', $nama_proposal);
 
             $infoPesertaModel = new InfoPesertaModel();
             $infoPesertaModel->save($info_peserta);

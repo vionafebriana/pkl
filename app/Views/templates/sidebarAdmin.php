@@ -2,7 +2,7 @@
 <ul class="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="admin">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="Admin">
         <div class="sidebar-brand-icon rotate-n-15">
             <img style="width:50px" src="/assets/img/logobps.png" alt="Logo">
         </div>
@@ -14,7 +14,7 @@
 
     <!-- Nav Item - Beranda -->
     <li class="nav-item">
-        <a class="nav-link" href="Home">
+        <a class="nav-link" href="/Admin">
             <i class="fa fa-home"></i>
             <span>Beranda</span></a>
     </li>
@@ -27,37 +27,38 @@
         Master Data
     </div>
 
-    <!-- Nav Item - absensi Menu -->
+    <!-- Nav Item - data pembimbing -->
     <li class="nav-item">
-        <a class="nav-link" href="">
+        <a class="nav-link" href="/Admin/dataPembimbing">
             <i class="fa fa-edit"></i>
             <span>Data Pembimbing</span>
         </a>
     </li>
 
-    <!-- Nav Item - Laporan aktivitas harian Menu -->
+    <!-- Nav Item - Data Peserta -->
     <li class="nav-item">
-        <a class="nav-link" href="">
+        <a class="nav-link" href="/Admin/dataPeserta">
             <i class="fa fa-folder-open"></i>
             <span>Data Peserta</span>
         </a>
     </li>
 
-    <!-- Nav Item - Laporan aktivitas harian Menu -->
+    <!-- Nav Item - Laporan absensi -->
     <li class="nav-item">
-        <a class="nav-link" href="">
+        <a class="nav-link" href="/Admin/dataAbsen">
             <i class="fa fa-folder-open"></i>
             <span>Laporan Absensi</span>
         </a>
     </li>
 
-    <!-- Nav Item - Laporan aktivitas harian Menu -->
+    <!-- Nav Item - Laporan aktivitas harian-->
     <li class="nav-item">
         <a class="nav-link" href="">
             <i class="fa fa-folder-open"></i>
             <span>Laporan Aktivitas Harian</span>
         </a>
     </li>
+
     <!-- Divider -->
     <hr class="sidebar-divider">
     <li class="nav-item">

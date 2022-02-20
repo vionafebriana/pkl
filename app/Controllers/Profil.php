@@ -34,9 +34,9 @@ class Profil extends BaseController
             }
             $avatar = $this->request->getFile('foto');
             $randomname = $avatar->getRandomName();
-            $avatar->move(ROOTPATH . 'public/fotoprofil/' . $id, $randomname);
+            $avatar->move(ROOTPATH . 'public/assets/fotoprofil/' . $id, $randomname);
             $profil = [
-                'foto' => 'fotoprofil/' . $id . '/' . $randomname
+                'foto' => '/assets/fotoprofil/' . $id . '/' . $randomname
             ];
             $infoModel->update($info['id'], $profil);
 

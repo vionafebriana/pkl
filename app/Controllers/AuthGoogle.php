@@ -27,11 +27,11 @@ class AuthGoogle extends BaseController
         $client->addScope('profile');
         $client->addScope('email');
 
-        if(isset($_GET['code'])){
+        if (isset($_GET['code'])) {
             $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
             $client->setAccessToken($token['access_token']);
             $service = new Google_Service_Oauth2($client);
-        }else{
+        } else {
             return redirect()->to($client->createAuthUrl());
         }
         $respond = [
@@ -40,14 +40,14 @@ class AuthGoogle extends BaseController
             'regist' => true
         ];
         $userModel = new UserModel();
-        $user = $userModel->where('email' , $respond['email'])->get()->getRowArray();
-        if($user){
-            if($user['status']==1){
+        $user = $userModel->where('email', $respond['email'])->get()->getRowArray();
+        if ($user) {
+            if ($user['status'] == 1 && $user['endDate'] > date('Y-m-d')) {
                 session()->set($user);
-                session()->set('log',true);
+                session()->set('log', true);
                 return redirect()->to(base_url(''));
             }
-        }else{
+        } else {
             session()->set($respond);
             return redirect()->to(base_url('Registrasi'));
         }

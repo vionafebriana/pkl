@@ -51,7 +51,7 @@
                                     </tr>
                                     <tr>
                                         <th scope="row">Jenis Kelamin</th>
-                                        <td><?= $user['jenisKelamin']; ?></td>
+                                        <td><?= ($user['jenisKelamin'] == '1' ? 'Laki-Laki' : 'Perempuan') ?></td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Tanggal Lahir</th>
