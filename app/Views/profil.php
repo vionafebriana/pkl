@@ -1,4 +1,5 @@
 <div id="layoutSidenav_content">
+    <?php $val = Service('validation'); ?>
     <main>
         <header class="page-header page-header-compact page-header-light border-bottom bg-white mb-4">
             <div class="container-xl px-4">
@@ -24,11 +25,16 @@
                         <div class="card-header">Profile Picture</div>
                         <div class="card-body text-center">
                             <!-- Profile picture image-->
-                            <img class="img-account-profile rounded-circle mb-2" src="<?= $user['foto']; ?>" style="width:60%;" alt="" />
-                            <!-- Profile picture help block-->
-                            <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
-                            <!-- Profile picture upload button-->
-                            <button class="btn btn-primary" type="button">Upload new image</button>
+                            <img class="img-account-profile rounded-circle mb-2" src="<?= $user['foto']; ?>" style="width:230px;height:230px;" alt="" />
+                            <form class="user" action="" enctype="multipart/form-data" method="POST">
+                                <div class="form-group">
+                                    <input type="file" name="foto" class="form-control" id="foto">
+                                    <?= ($val->hasError('foto')) ? '<small class="text-danger">' . $val->getError('foto') . '</small>' : ''; ?>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" name="submit" id="send_form" class="btn btn-success">Upload</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

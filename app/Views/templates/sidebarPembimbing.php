@@ -2,7 +2,7 @@
 <ul class="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="pembimbing">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="Pembimbing">
         <div class="sidebar-brand-icon rotate-n-15">
             <img style="width:50px" src="/assets/img/logobps.png" alt="Logo">
         </div>
@@ -14,7 +14,7 @@
 
     <!-- Nav Item - Beranda -->
     <li class="nav-item">
-        <a class="nav-link" href="Home">
+        <a class="nav-link" href="Pembimbing">
             <i class="fa fa-home"></i>
             <span>Beranda</span></a>
     </li>

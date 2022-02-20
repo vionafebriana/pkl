@@ -25,7 +25,7 @@
                     <tbody>
                         <?php foreach ($aktivitas as $key => $value) : ?>
                             <tr>
-                                <td>No</td>
+                                <td>1</td>
                                 <td><?= $value['nama']; ?></td>
                                 <td><?= $value['date']; ?></td>
                                 <td><?= $value['mulai']; ?></td>

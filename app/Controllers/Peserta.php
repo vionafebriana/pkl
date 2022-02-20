@@ -31,7 +31,7 @@ class Peserta extends BaseController
         $timeNow = strtotime(date('H:i:s'));
 
         $pagi = [strtotime('07:00:00'), strtotime('08:00:00')];
-        $sore = [strtotime('10:00:00'), strtotime('16:30:00')];
+        $sore = [strtotime('16:00:00'), strtotime('16:30:00')];
 
         $user = session()->id;
         $absenModel = new AbsenModel();

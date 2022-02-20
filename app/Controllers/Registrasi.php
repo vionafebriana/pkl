@@ -12,9 +12,6 @@ class Registrasi extends BaseController
         if (!session()->regist) {
             return redirect()->to(base_url('Home'));
         }
-        $data = [
-            'judul' => 'PENDAFTARAN PKL'
-        ];
 
         if (isset($_POST['submit'])) {
             // validasi pendaftaran    
@@ -92,7 +89,7 @@ class Registrasi extends BaseController
             session()->destroy();
             return redirect()->to(base_url('Home'));
         }
-        echo view('templates/header', $data);
+        echo view('templates/header');
         echo view('auth/registrasi');
     }
 }

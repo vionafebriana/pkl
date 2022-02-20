@@ -116,14 +116,16 @@
                     <!-- /.card-heading -->
                     <div class="card-body">
                         <div class="list-group">
-                            <a href="#" class="list-group-item">
+                            <a href="Profil" class="list-group-item">
                                 <i class="fa fa-user fa-fw"></i> Viona Febriana
                                 <span class="text-muted small"><em>4 minutes ago</em>
                                 </span>
                             </a>
+                            <a href=""><i class="fa fa-check"></i></a>
+                            <a href=""><i class="fa fa-trash"></i></a>
                         </div>
                         <!-- /.list-group -->
-                        <a href="#" class="btn btn-default btn-block">Selengkapnya</a>
+                        <a href="" class="btn btn-default btn-block">Selengkapnya</a>
                     </div>
                 </div>
             </div>

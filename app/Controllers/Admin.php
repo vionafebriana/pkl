@@ -10,16 +10,17 @@ class Admin extends BaseController
     {
         $userModel = new UserModel();
         $pesertaAktif = $userModel->where('role', 3)->join('info_peserta', 'user.id=info_peserta.userId')
-            ->where('info_peserta.endDate>=', date('Y-m-d'))->countAllResults();
+            ->where('info_peserta.endDate>', date('Y-m-d'))->countAllResults();
         $pesertaDeaktif = $userModel->where('role', 3)->join('info_peserta', 'user.id=info_peserta.userId')
-            ->where('info_peserta.endDate<', date('Y-m-d'))->countAllResults();
+            ->where('info_peserta.endDate<=', date('Y-m-d'))->countAllResults();
+        $pendaftar = $userModel->where('role', 3)->where('status', 0)->countAllResults();
         $pembimbing = $userModel->where('role', 2)->countAllResults();
 
         $data = [
-            'judul' => 'HALAMAN ADMIN',
             'pesertaAktif' => $pesertaAktif,
             'pesertaDeaktif' => $pesertaDeaktif,
-            'pembimbing' => $pembimbing
+            'pembimbing' => $pembimbing,
+            'pendaftar' => $pendaftar
         ];
 
 

@@ -39,7 +39,6 @@
 <!-- Page level custom scripts -->
 <script src="/assets/js/demo/chart-area-demo.js"></script>
 <script src="/assets/js/demo/chart-kuota.js"></script>
-<script src="/assets/js/demo/chart-kehadiran.js"></script>
 
 <script src="/assets/js/clock.js"></script>
 <script src="/assets/js/absen.js"></script>
