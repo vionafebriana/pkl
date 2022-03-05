@@ -69,6 +69,15 @@
             <hr>
 
             <!-- ======= Informasi ======= -->
+            <!-- calender -->
+            <h2>PHP Calendar Event Management FullCalendar JavaScript
+                Library</h2>
+
+            <div class="response"></div>
+            <div id='calendar'></div>
+            <!-- end kalender -->
+
+
             <div class="row pt-sm-5 px-sm-5 mx-sm-5" id="informasi">
                 <div class="col h1 text-dark mb-1">
                     INFORMASI</div>

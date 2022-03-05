@@ -2,50 +2,115 @@
 <div class="container-fluid">
 
     <!-- DataTales Example -->
+
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Laporan Aktivitas Harian</h6>
-            <h6 class=" m-0 font-weight-bold text-primary text-right"><a href="TambahAktivitas">tambah</a></h6>
+            <ul class="nav nav-pills nav-fill">
+                <li class="nav-item">
+                    <a class="nav-link active font-weight-bold" aria-current="page" href="#" id="pendaftar">Pendaftar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link font-weight-bold" aria-current="page" href="#" id="aktif">Peserta Aktif</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link font-weight-bold" aria-current="page" href="#" id="deaktif">Peserta Deaktif</a>
+                </li>
+            </ul>
         </div>
+
         <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <div class="table-responsive" id="tabel-pendaftar">
+                <table class="table table-bordered" id="dataTable2" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama Peserta</th>
-                            <th>Tanggal</th>
-                            <th>Jam Mulai</th>
-                            <th>Jam Selesai</th>
-                            <th>Penjelasan Kegiatan</th>
-                            <th>Status</th>
+                            <th>Nama</th>
+                            <th>Instansi/Sekolah</th>
+                            <th>Mulai</th>
+                            <th>Selesai</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($aktivitas as $key => $value) : ?>
+                        <?php $i = 1; ?>
+                        <?php foreach ($pendaftar as $key => $value) : ?>
                             <tr>
-                                <td>1</td>
-                                <td><?= $value['nama']; ?></td>
-                                <td><?= $value['date']; ?></td>
-                                <td><?= $value['mulai']; ?></td>
-                                <td><?= $value['selesai']; ?></td>
-                                <td><?= $value['keterangan']; ?></td>
-                                <td><?= ($value['status'] == '0' ? 'belum disetujui' : 'disetujui') ?></td>
+                                <td><?= $i;
+                                    $i++; ?></td>
+                                <td><a href="/Pembimbing/detailPeserta/<?= $value['userId'] ?>"><?= $value['nama']; ?></a></td>
+                                <td><?= $value['instansi']; ?></td>
+                                <td><?= $value['startDate']; ?></td>
+                                <td><?= $value['endDate']; ?></td>
                                 <td class="text-center flex">
-                                    <button><i class="fa fa-edit"></i></button>
-                                    <button><i class="fa fa-trash"></i></button>
+                                    <a href="/Pembimbing/terimaPeserta/<?= $value['userId'] ?>"><i class="fa fa-check"></i></a>
+                                    <b>|</b>
+                                    <a href="/Pembimbing/hapusPeserta/<?= $value['userId'] ?>"><i class="fa fa-times"></i></a>
                                 </td>
                             </tr>
                         <?php endforeach ?>
                     </tbody>
                 </table>
             </div>
-        </div>
-    </div>
 
-</div>
-<!-- /.container-fluid -->
+            <div class="table-responsive" id="tabel-aktif" style="display: none;">
+                <table class="table table-bordered" id="dataTable3" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama</th>
+                            <th>Instansi/Sekolah</th>
+                            <th>Mulai</th>
+                            <th>Selesai</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $i = 1; ?>
+                        <?php foreach ($aktif as $key => $value) : ?>
+                            <tr>
+                                <td><?= $i;
+                                    $i++; ?></td>
+                                <td><a href="/Pembimbing/detailPeserta/<?= $value['userId'] ?>"><?= $value['nama']; ?></a></td>
+                                <td><?= $value['instansi']; ?></td>
+                                <td><?= $value['startDate']; ?></td>
+                                <td><?= $value['endDate']; ?></td>
+                            </tr>
+                        <?php endforeach ?>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="table-responsive" id="tabel-deaktif" style="display: none;">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama</th>
+                            <th>Instansi/Sekolah</th>
+                            <th>Mulai</th>
+                            <th>Selesai</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $i = 1; ?>
+                        <?php foreach ($deaktif as $key => $value) : ?>
+                            <tr>
+                                <td><?= $i;
+                                    $i++; ?></td>
+                                <td><a href="/Pembimbing/detailPeserta/<?= $value['userId'] ?>"><?= $value['nama']; ?></a></td>
+                                <td><?= $value['instansi']; ?></td>
+                                <td><?= $value['startDate']; ?></td>
+                                <td><?= $value['endDate']; ?></td>
+                            </tr>
+                        <?php endforeach ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+
+    </div>
+    <!-- /.container-fluid -->
 
 </div>
 <!-- End of Main Content -->

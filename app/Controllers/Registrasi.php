@@ -47,9 +47,32 @@ class Registrasi extends BaseController
                         'required' => 'tanggal mulai harus diisi'
                     ]
                 ],
-                'endDate' => 'required',
-                'pengantar' => 'uploaded[pengantar]',
-                'proposal' => 'uploaded[proposal]',
+                'endDate' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'tanggal selesai harus diisi'
+                    ]
+                ],
+                'pengantar' => [
+                    'uploaded[pengantar]',
+                    'mime_in[pengantar,application/pdf,application/zip,application/msword,application/x-tar]',
+                    'max_size[pengantar,10000]',
+                    'errors' => [
+                        'uploaded' => 'Anda belum memilih file',
+                        'mime_in' => 'Format file harus berupa pdf',
+                        'max_size' => 'Ukuran maksimal file 10MB'
+                    ]
+                ],
+                'proposal' => [
+                    'uploaded[proposal]',
+                    'mime_in[proposal,application/pdf,application/zip,application/msword,application/x-tar]',
+                    'max_size[proposal,10000]',
+                    'errors' => [
+                        'uploaded' => 'Anda belum memilih file',
+                        'mime_in' => 'Format file harus berupa pdf',
+                        'max_size' => 'Ukuran maksimal file 10MB'
+                    ]
+                ],
             ])) {
                 return redirect()->to(base_url('Registrasi'))->withInput();
             }
@@ -60,7 +83,7 @@ class Registrasi extends BaseController
                 'tglLahir' => $this->request->getPost('tglLahir'),
                 'email' => $this->request->getPost('email'),
                 'role' => 3,
-                'status' => 1
+                'status' => 0
             ];
             $userModel = new UserModel();
             $userModel->save($user);

@@ -2,7 +2,7 @@
 <ul class="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="Pembimbing">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/Pembimbing">
         <div class="sidebar-brand-icon rotate-n-15">
             <img style="width:50px" src="/assets/img/logobps.png" alt="Logo">
         </div>
@@ -14,7 +14,7 @@
 
     <!-- Nav Item - Beranda -->
     <li class="nav-item">
-        <a class="nav-link" href="Pembimbing">
+        <a class="nav-link" href="/Pembimbing">
             <i class="fa fa-home"></i>
             <span>Beranda</span></a>
     </li>
@@ -29,7 +29,7 @@
 
     <!-- Nav Item - absensi Menu -->
     <li class="nav-item">
-        <a class="nav-link" href="">
+        <a class="nav-link" href="/Pembimbing/dataPeserta">
             <i class="fa fa-edit"></i>
             <span>Data Peseta PKL</span>
         </a>
@@ -37,7 +37,7 @@
 
     <!-- Nav Item - Laporan aktivitas harian Menu -->
     <li class="nav-item">
-        <a class="nav-link" href="">
+        <a class="nav-link" href="/Pembimbing/dataAktivitas">
             <i class="fa fa-folder-open"></i>
             <span>Laporan Aktivitas Harian</span>
         </a>
@@ -45,7 +45,7 @@
 
     <!-- Nav Item - Laporan aktivitas harian Menu -->
     <li class="nav-item">
-        <a class="nav-link" href="">
+        <a class="nav-link" href="/Pembimbing/dataAbsen">
             <i class="fa fa-folder-open"></i>
             <span>Laporan Absensi</span>
         </a>

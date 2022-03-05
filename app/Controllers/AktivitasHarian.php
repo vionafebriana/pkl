@@ -9,7 +9,7 @@ class AktivitasHarian extends BaseController
     public function index()
     {
         $aktivitasModel = new AktivitasModel();
-        $user = session()->id;
+        $user = session()->userId;
         $aktivitas = $aktivitasModel->where('userId', $user)->get()->getResultArray();
 
         $data = [
@@ -26,7 +26,8 @@ class AktivitasHarian extends BaseController
 
     public function tambahAktivitas()
     {
-        $user = session()->id;
+
+        $user = session()->userId;
         if (isset($_POST['submit'])) {
             if (!$this->validate([
                 'date' => [

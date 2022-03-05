@@ -9,7 +9,7 @@ class Profil extends BaseController
 {
     public function index()
     {
-        $id = session()->id;
+        $id = session()->userId;
         $userModel = new UserModel();
         $user = $userModel->join('info_peserta', 'user.id=info_peserta.userId')->where('info_peserta.userId', $id)->first();
         $data = [

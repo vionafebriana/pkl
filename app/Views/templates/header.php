@@ -20,7 +20,7 @@
     <link href="/assets/css/timeline.css" rel="stylesheet">
 
     <link href="/assets/css/timer.css" rel="stylesheet">
-
+    <link href="/assets/css/kalender.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/assets/css/datatables.css">
 </head>
 

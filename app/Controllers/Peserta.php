@@ -30,7 +30,7 @@ class Peserta extends BaseController
         $dateNow = strtotime(date('Y-m-d'));
         $timeNow = strtotime(date('H:i:s'));
 
-        $pagi = [strtotime('07:00:00'), strtotime('08:00:00')];
+        $pagi = [strtotime('07:00:00'), strtotime('14:00:00')];
         $sore = [strtotime('16:00:00'), strtotime('16:30:00')];
 
         $user = session()->id;
@@ -101,7 +101,7 @@ class Peserta extends BaseController
     {
         date_default_timezone_set('Asia/Jakarta');
         $date = date('Y-m-d');
-        $user = session()->id;
+        $user = session()->userId;
         $absenModel = new AbsenModel();
         $respond = $absenModel->where('date', $date)->where('user_id', $user)->get()->getRowArray();
         if ($respond) {

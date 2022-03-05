@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\UserModel;
 use App\Models\AbsenModel;
+use App\Models\AktivitasModel;
 
 class Admin extends BaseController
 {
@@ -32,7 +33,7 @@ class Admin extends BaseController
         echo view('templates/footer');
     }
 
-    // Master data pembimbing
+    // Data pembimbing
     public function dataPembimbing()
     {
         $userModel = new UserModel();
@@ -135,7 +136,7 @@ class Admin extends BaseController
         return redirect()->to(base_url('Admin/dataPembimbing'));
     }
 
-    // Master data peserta
+    // Data peserta
     public function dataPeserta()
     {
         $userModel = new UserModel();
@@ -204,6 +205,25 @@ class Admin extends BaseController
         echo view('templates/sidebarAdmin');
         echo view('templates/topbar');
         echo view('admin/dataabsen');
+        echo view('templates/footer');
+    }
+
+    // Data Laporan Aktivitas Harian
+    public function dataAktivitas()
+    {
+        $aktivitasModel = new AktivitasModel();
+        $setuju = $aktivitasModel->join('user', 'aktivitas.userId=user.id')->where('aktivitas.status', 1)->get()->getResultArray();
+        $belumsetuju = $aktivitasModel->join('user', 'aktivitas.userId=user.id')->where('aktivitas.status', 0)->get()->getResultArray();
+
+        $data = [
+            'setuju' => $setuju,
+            'belumsetuju' => $belumsetuju
+        ];
+
+        echo view('templates/header', $data);
+        echo view('templates/sidebarAdmin');
+        echo view('templates/topbar');
+        echo view('admin/dataaktivitas.php');
         echo view('templates/footer');
     }
 }

@@ -59,9 +59,18 @@
                                         <th scope="row">Pelaksanaan PKL</th>
                                         <td><?= $user['startDate']; ?> sampai <?= $user['endDate']; ?></td>
                                     </tr>
+                                    <tr>
+                                        <th scope="row">Surat Pengantar</th>
+                                        <td> <a class="btn btn-sm btn-default" href="/Pembimbing/bukaPengantar/<?= $user['id'] ?>" target="_blank"><span class="fa fa-eye"></span> Lihat</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Proposal</th>
+                                        <td> <a class="btn btn-sm btn-default" href="/Pembimbing/bukaProposal/<?= $user['id'] ?>" target="_blank"><span class="fa fa-eye"></span> Lihat</a>
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
-
                         </div>
                     </div>
                 </div>

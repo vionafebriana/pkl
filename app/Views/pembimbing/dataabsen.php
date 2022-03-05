@@ -21,9 +21,11 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php $i = 1; ?>
                         <?php foreach ($absen as $key => $value) : ?>
                             <tr>
-                                <td></td>
+                                <td><?= $i;
+                                    $i++; ?></td>
                                 <td><?= $value['nama']; ?></td>
                                 <td><?= $value['date']; ?></td>
                                 <td><?= $value['datang']; ?></td>
