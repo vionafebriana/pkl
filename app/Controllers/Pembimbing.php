@@ -23,6 +23,10 @@ class Pembimbing extends BaseController
         $daftar = $userModel->limit(10)->where('role', 3)->join('info_peserta', 'user.id=info_peserta.userId')
             ->where('status', 0)->get()->getResultArray();
         $aktivitas = $aktivitasModel->limit(10)->select('aktivitas.id as acid, aktivitas.*,user.*')->join('user', 'aktivitas.userId=user.id')->where('aktivitas.status', 0)->get()->getResultArray();
+        $pesAktif = $userModel->where('role', 3)->where('status', 1)->join('info_peserta', 'user.id=info_peserta.userId')
+            ->where('info_peserta.endDate>', date('Y-m-d'))->get()->getResultArray();;
+
+
 
         $data = [
             'pendaftar' => $pendaftar,
@@ -30,7 +34,8 @@ class Pembimbing extends BaseController
             'aktif' => $pesertaAktif,
             'riwayat' => $riwayat,
             'daftar' => $daftar,
-            'aktivitas' => $aktivitas
+            'aktivitas' => $aktivitas,
+            'pesAktif' => $pesAktif
 
         ];
         echo view('templates/header', $data);

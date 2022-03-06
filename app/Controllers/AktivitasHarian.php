@@ -11,12 +11,9 @@ class AktivitasHarian extends BaseController
         $aktivitasModel = new AktivitasModel();
         $user = session()->userId;
         $aktivitas = $aktivitasModel->where('userId', $user)->get()->getResultArray();
-
         $data = [
             'aktivitas' => $aktivitas
         ];
-
-
         echo view('templates/header', $data);
         echo view('templates/sidebar');
         echo view('templates/topbar');
@@ -26,40 +23,28 @@ class AktivitasHarian extends BaseController
 
     public function tambahAktivitas()
     {
-
         $user = session()->userId;
         if (isset($_POST['submit'])) {
             if (!$this->validate([
                 'date' => [
                     'rules' => 'required',
-                    'errors' => [
-                        'required' => 'tanggal harus diisi'
-                    ]
+                    'errors' => ['required' => 'Masukkan tanggal aktivitas dilakukan']
                 ],
-
                 'mulai'    => [
                     'rules' => 'required',
-                    'errors' => [
-                        'required' => 'Jam Mulai harus diisi'
-                    ]
+                    'errors' => ['required' => 'Masukkan jam mulai aktivitas']
                 ],
                 'selesai' => [
                     'rules' => 'required',
-                    'errors' => [
-                        'required' => 'jam selesai harus diisi'
-                    ]
+                    'errors' => ['required' => 'Masukkan jam selesai aktivitas']
                 ],
                 'keterangan' => [
                     'rules' => 'required',
-                    'errors' => [
-                        'required' => 'keterangan harus diisi'
-                    ]
+                    'errors' => ['required' => 'Masukkan detail aktivitas']
                 ]
-
             ])) {
                 return redirect()->to(base_url('AktivitasHarian/tambahAktivitas'))->withInput();
             }
-
             $aktivitas = [
                 'userId' => $user,
                 'date' => $this->request->getPost('date'),
@@ -87,34 +72,25 @@ class AktivitasHarian extends BaseController
             if (!$this->validate([
                 'date' => [
                     'rules' => 'required',
-                    'errors' => [
-                        'required' => 'tanggal harus diisi'
-                    ]
+                    'errors' => ['required' => 'Masukkan tanggal aktivitas dilakukan']
                 ],
 
                 'mulai'    => [
                     'rules' => 'required',
-                    'errors' => [
-                        'required' => 'Jam Mulai harus diisi'
-                    ]
+                    'errors' => ['required' => 'Masukkan jam mulai aktivitas']
                 ],
                 'selesai' => [
                     'rules' => 'required',
-                    'errors' => [
-                        'required' => 'jam selesai harus diisi'
-                    ]
+                    'errors' => ['required' => 'Masukkan jam selesai aktivitas']
                 ],
                 'keterangan' => [
                     'rules' => 'required',
-                    'errors' => [
-                        'required' => 'keterangan harus diisi'
-                    ]
+                    'errors' => ['required' => 'Masukkan detail aktivitas']
                 ]
 
             ])) {
                 return redirect()->to(base_url('AktivitasHarian/editAktivitas'))->withInput();
             }
-
             $aktivitas = [
                 'date' => $this->request->getPost('date'),
                 'mulai' => $this->request->getPost('mulai'),

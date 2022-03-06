@@ -8,7 +8,7 @@
                         <div class="col-auto mb-3">
                             <h1 class="page-header-title">
                                 <div class="page-header-icon"><i data-feather="user"></i></div>
-                                Account Settings - Profile
+                                Pengaturan Akun - Profil
                             </h1>
                         </div>
                     </div>
@@ -67,7 +67,7 @@
                                     </tr>
                                     <tr>
                                         <th scope="row">Pelaksanaan PKL</th>
-                                        <td><?= $user['startDate']; ?> sampai <?= $user['endDate']; ?></td>
+                                        <td><?= $user['startDate'];  ?> sampai <?= $user['endDate']; ?></td>
                                     </tr>
                                 </tbody>
                             </table>

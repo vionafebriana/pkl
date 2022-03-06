@@ -1,8 +1,7 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
-    <!-- DataTales Example -->
-
+    <!-- Tabel data peserta -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <ul class="nav nav-pills nav-fill">
@@ -19,6 +18,7 @@
         </div>
 
         <div class="card-body">
+            <!-- tabel data pendaftar -->
             <div class="table-responsive" id="tabel-pendaftar">
                 <table class="table table-bordered" id="dataTable2" width="100%" cellspacing="0">
                     <thead>
@@ -51,7 +51,7 @@
                     </tbody>
                 </table>
             </div>
-
+            <!-- tabel data peserta aktif -->
             <div class="table-responsive" id="tabel-aktif" style="display: none;">
                 <table class="table table-bordered" id="dataTable3" width="100%" cellspacing="0">
                     <thead>
@@ -78,7 +78,7 @@
                     </tbody>
                 </table>
             </div>
-
+            <!-- tabel data peserta yang sudah tidak aktif -->
             <div class="table-responsive" id="tabel-deaktif" style="display: none;">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
@@ -106,11 +106,10 @@
                 </table>
             </div>
         </div>
-
-
-
     </div>
-    <!-- /.container-fluid -->
+
+</div>
+<!-- /.container-fluid -->
 
 </div>
 <!-- End of Main Content -->

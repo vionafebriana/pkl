@@ -18,40 +18,28 @@ class Registrasi extends BaseController
             if (!$this->validate([
                 'nama' => [
                     'rules' => 'required',
-                    'errors' => [
-                        'required' => 'nama harus diisi'
-                    ]
+                    'errors' => ['required' => 'Masukkan nama lengkap Anda']
                 ],
                 'JK' => [
                     'rules' => 'required',
-                    'errors' => [
-                        'required' => 'Jenis Kelamin harus diisi'
-                    ]
+                    'errors' => ['required' => 'Masukkan jenis kelamin Anda']
                 ],
                 'tglLahir' => [
                     'rules' => 'required',
-                    'errors' => [
-                        'required' => 'tanggal lahir harus diisi'
-                    ]
+                    'errors' => ['required' => 'Masukkan tanggal lahir Anda']
                 ],
                 'email'    => 'required|valid_email',
                 'instansi'    => [
                     'rules' => 'required',
-                    'errors' => [
-                        'required' => 'instansi/sekolah asal harus diisi'
-                    ]
+                    'errors' => ['required' => 'Masukkan asal instansi/sekolah Anda']
                 ],
                 'startDate' => [
                     'rules' => 'required',
-                    'errors' => [
-                        'required' => 'tanggal mulai harus diisi'
-                    ]
+                    'errors' => ['required' => 'Masukkan tanggal mulai magang']
                 ],
                 'endDate' => [
                     'rules' => 'required',
-                    'errors' => [
-                        'required' => 'tanggal selesai harus diisi'
-                    ]
+                    'errors' => ['required' => 'Masukkan tanggal selesai magang']
                 ],
                 'pengantar' => [
                     'uploaded[pengantar]',
@@ -107,7 +95,7 @@ class Registrasi extends BaseController
 
             $infoPesertaModel = new InfoPesertaModel();
             $infoPesertaModel->save($info_peserta);
-            session()->destroy();
+            session()->setFlashdata('success', 'Sukses! Anda berhasil melakukan pendaftaran.');
             return redirect()->to(base_url('Home'));
         }
         echo view('templates/header');

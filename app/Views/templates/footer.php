@@ -11,10 +11,8 @@
         </div>
 </footer>
 <!-- End of Footer -->
-
 </div>
 <!-- End of Content Wrapper -->
-
 </div>
 <!-- End of Page Wrapper -->
 
@@ -33,23 +31,17 @@
 <!-- Custom scripts for all pages-->
 <script src="/assets/js/sb-admin-2.min.js"></script>
 
-<!-- Page level plugins -->
-<script src="/assets/vendor/chart.js/Chart.min.js"></script>
-
 <!-- Page level custom scripts -->
-<script src="/assets/js/demo/chart-area-demo.js"></script>
-<script src="/assets/js/demo/chart-kuota.js"></script>
 <script src="/assets/js/tabel-laporan.js"></script>
 <script src="/assets/js/tabel-peserta.js"></script>
-<script src="/assets/js/kalender.js"></script>
-
 <script src="/assets/js/clock.js"></script>
+<script src="/assets/kalender/main.js"></script>
 <script src="/assets/js/absen.js"></script>
 <script src="/assets/js/tab-pembimbing.js"></script>
+<script src="/assets/js/alert.js"></script>
 <script type="text/javascript" charset="utf8" src="https://releases.jquery.com/git/jquery-3.x-git.js"></script>
-<script type="text/javascript" charset="utf8" src="/assets/js/demo/datatables-demo.js"></script>
+<script type="text/javascript" charset="utf8" src="/assets/js/datatables-demo.js"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-
 <script>
     $(document).ready(function() {
         $('#dataTable2').DataTable();

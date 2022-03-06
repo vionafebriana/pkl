@@ -22,7 +22,7 @@
                     </thead>
                     <tbody>
                         <?php foreach ($aktivitas as $key => $value) : ?>
-                            <tr>
+                            <tr id="<?= $value['id']; ?>">
                                 <td><?= $value['date']; ?></td>
                                 <td><?= $value['mulai']; ?></td>
                                 <td><?= $value['selesai']; ?></td>
@@ -30,8 +30,8 @@
                                 <?php if ($value['status'] == '0') : ?>
                                     <td>Belum Disetujui</td>
                                     <td class="text-center flex">
-                                        <a href="AktivitasHarian/editAktivitas/<?= $value['id']; ?>"><i class="fa fa-edit"></i></a>
-                                        <a href="AktivitasHarian/hapusAktivitas/<?= $value['id']; ?>"><i class="fa fa-trash"></i></a>
+                                        <a href="AktivitasHarian/editAktivitas/<?= $value['id']; ?>"> <button type="submit" class="btn btn-success"> <i class="fa fa-edit"></i></button></a>
+                                        <button type="submit" class="btn btn-danger remove"> <i class="fa fa-trash "></i></button>
                                     </td>
                                 <?php else : ?>
                                     <td>Disetujui</td>

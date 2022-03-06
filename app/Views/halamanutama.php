@@ -1,3 +1,23 @@
+<!-- kalender kuota js -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth'
+        });
+        // tambah detail kuota
+        calendar.batchRendering(function() {
+            calendar.changeView('dayGridMonth');
+            calendar.addEvent({
+                title: 'Kuota Penuh',
+                start: '2022-03-01',
+                end: '2022-03-10'
+            });
+        });
+        calendar.render();
+    });
+</script>
+
 <!-- Content Wrapper -->
 <div id="content-wrapper" class="d-flex flex-column">
 
@@ -69,67 +89,29 @@
             <hr>
 
             <!-- ======= Informasi ======= -->
-            <!-- calender -->
-            <h2>PHP Calendar Event Management FullCalendar JavaScript
-                Library</h2>
-
-            <div class="response"></div>
-            <div id='calendar'></div>
-            <!-- end kalender -->
-
-
             <div class="row pt-sm-5 px-sm-5 mx-sm-5" id="informasi">
                 <div class="col h1 text-dark mb-1">
                     INFORMASI</div>
             </div>
-            <div class="row px-sm-5 mx-sm-5 justify-content-center">
-                <!-- User days left -->
-                <div class="col-lg-5 mt-5">
-
-                    <?php foreach ($user as $index => $u) : ?>
-                        <div class="icon-box d-flex align-items-center mb-3">
-                            <div>
-                                <div class="icon"><i class="fa fa-user"></i></div>
-                            </div>
-                            <div class="body-icon">
-                                <h6 class="m-1"> <?= $u['nama'] . ' kurang ' . $u['sisaHari'] . ' hari'; ?>
-                                </h6>
-                            </div>
+            <!-- Kalender -->
+            <div class="col-md-6 pt-sm-3 mx-auto" id="calendar"></div>
+            <!-- User days left
+            <div class="col-lg-5 mt-5">
+                <?php foreach ($user as $index => $u) : ?>
+                    <div class="icon-box d-flex align-items-center mb-3">
+                        <div>
+                            <div class="icon"><i class="fa fa-user"></i></div>
                         </div>
-                    <?php endforeach ?>
-
-                </div>
-                <!-- End user days left -->
-
-                <!-- Pie Chart -->
-                <div class="col-lg-5 mt-0">
-                    <div class="card shadow mb-4">
-                        <!-- Card Header-->
-                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                            <h6 class="m-0 text-primary">Kuota PKL di BPS Kota Malang</h6>
-                        </div>
-                        <!-- Card Body -->
-                        <div class="card-body">
-                            <div class="chart-pie pt-4 pb-2">
-                                <canvas id="kuota"></canvas>
-                            </div>
-                            <div class="mt-4 text-center small">
-                                <span class="mr-2">
-                                    <i class="fas fa-circle text-primary"></i> Belum Terisi
-                                </span>
-                                <span class="mr-2">
-                                    <i class="fas fa-circle text-success"></i> Sudah Terisi
-                                </span>
-                            </div>
+                        <div class="body-icon">
+                            <h6 class="m-1"> <?= $u['nama'] . ' kurang ' . $u['sisaHari'] . ' hari'; ?>
+                            </h6>
                         </div>
                     </div>
-                </div>
-                <!-- End Pie Chart -->
-            </div>
-            <!-- End Informasi -->
+                <?php endforeach ?>
+            </div> -->
             <hr>
 
-            <!-- ======= Alur ======= -->
+            <!-- ======= Alur Pendaftaran ======= -->
             <div class="container" id="alur">
                 <div class="text-center pb-sm-5">
                     <h2 class="h2 mb-1 pt-sm-5 mt-sm-5">ALUR PENDAFTARAN</h2>

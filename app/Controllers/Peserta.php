@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Models\AbsenModel;
-use App\Models\UserModel;
 use CodeIgniter\API\ResponseTrait;
 
 class Peserta extends BaseController
@@ -30,10 +29,10 @@ class Peserta extends BaseController
         $dateNow = strtotime(date('Y-m-d'));
         $timeNow = strtotime(date('H:i:s'));
 
-        $pagi = [strtotime('07:00:00'), strtotime('14:00:00')];
-        $sore = [strtotime('16:00:00'), strtotime('16:30:00')];
+        $pagi = [strtotime('07:00:00'), strtotime('09:00:00')];
+        $sore = [strtotime('09:30:00'), strtotime('16:30:00')];
 
-        $user = session()->id;
+        $user = session()->userId;
         $absenModel = new AbsenModel();
         $absen = $absenModel->where('date', date('Y-m-d'))->where('user_id', $user)->get()->getRowArray();
         if ($timeNow > $pagi[0] && $timeNow < $pagi[1]) {

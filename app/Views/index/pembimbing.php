@@ -1,3 +1,4 @@
+<!-- php keterangan waktu -->
 <?php
 function get_time_ago($time)
 {
@@ -21,9 +22,9 @@ function get_time_ago($time)
         }
     }
 } ?>
+
 <!-- Begin Page Content -->
 <div class="container-fluid">
-
 
     <div class="row">
         <div class="col-lg-12">
@@ -32,7 +33,7 @@ function get_time_ago($time)
         </div>
     </div>
 
-    <div class="row">
+    <div class="row mx-auto">
         <!-- Jumlah Pendaftar -->
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-primary shadow h-100">
@@ -57,7 +58,7 @@ function get_time_ago($time)
             </div>
         </div>
 
-        <!-- Konfirmasi Absensi dan Laporan Aktivitas Harian Peserta PKL -->
+        <!-- Jumlah laporan aktivitas baru yang belum disetujui -->
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-info shadow h-100">
                 <div class="card-body">
@@ -81,7 +82,7 @@ function get_time_ago($time)
             </div>
         </div>
 
-        <!-- Jumlah Peserta PKL -->
+        <!-- Jumlah Peserta magang yang aktif -->
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-success shadow h-100">
                 <div class="card-body">
@@ -92,10 +93,10 @@ function get_time_ago($time)
                         <div class="col mr-2 text-right">
                             <div class="h1 mb-0 font-weight-bold text-gray-800"><?= $aktif; ?></div>
                             <div class="text-sm font-weight-bold text-success text-uppercase mb-1">
-                                Total Peserta PKL</div>
+                                Peserta Magang Aktif </div>
                         </div>
                         <div class="row no-gutters align-items-center">
-                            <a href="#" id="peserta">
+                            <a href="#" id="pesaktif">
                                 <span>Selengkapnya</span>
                                 <i class="fa fa-arrow-circle-right"></i>
                         </div>
@@ -130,7 +131,7 @@ function get_time_ago($time)
         </div>
 
         <!-- Exspand Peserta Baru-->
-        <div class="card" id="pendaftartab" style="width: 100%; display:none">
+        <div class="card mb-5 mx-5" id="pendaftartab" style="width: 85%; display:none">
             <div class="card-header">
                 <i class="fa fa-bell fa-fw"></i> Peserta Baru!
             </div>
@@ -156,7 +157,7 @@ function get_time_ago($time)
         </div>
 
         <!-- Exspand Laporan aktivitas Baru-->
-        <div class="card" id="aktivitastab" style="width: 100%; display:none">
+        <div class="card mb-5 mx-5" id="aktivitastab" style="width: 85%; display:none">
             <div class="card-header">
                 <i class="fa fa-bell fa-fw"></i> Laporan Aktivitas Harian Baru!
             </div>
@@ -166,7 +167,21 @@ function get_time_ago($time)
                     <tbody>
                         <?php foreach ($aktivitas as $key => $value) : ?>
                             <tr>
-                                <td><a href="/Pembimbing/detailPeserta/<?= $value['userId'] ?>"><i class="fa fa-user fa-fw"></i> <?= $value['nama']; ?></a></td>
+                                <th>Nama</th>
+                                <th>Tanggal</th>
+                                <th>Jam Mulai</th>
+                                <th>Jam Selesai</th>
+                                <th>Keterangan</th>
+                                <th>Aksi</th>
+                            </tr>
+                            <tr>
+                                <td><a href="/Pembimbing/dataAktivitas/<?= $value['userId'] ?>"><i class="fa fa-user fa-fw"></i> <?= $value['nama']; ?></a></td>
+                                <td> <span class="text-muted small"><em><?= $value['date']; ?></em>
+                                    </span></td>
+                                <td> <span class="text-muted small"><em><?= $value['mulai']; ?></em>
+                                    </span></td>
+                                <td> <span class="text-muted small"><em><?= $value['selesai']; ?></em>
+                                    </span></td>
                                 <td> <span class="text-muted small"><em><?= $value['keterangan']; ?></em>
                                     </span></td>
                                 <td><a href="/Pembimbing/terimaAktivitas/<?= $value['acid'] ?>"><a href=""><i class="fa fa-check"></i></a></td>
@@ -179,7 +194,42 @@ function get_time_ago($time)
                 <a href="/Pembimbing/dataAktivitas" class="btn btn-default btn-block">Selengkapnya</a>
             </div>
         </div>
+
+        <!-- Exspand Peserta Aktif-->
+        <div class="card mb-5 mx-5" id="aktiftab" style="width: 85%; display:none">
+            <div class="card-header">
+                <i class="fa fa-bell fa-fw"></i> Peserta Magang yang masih aktif!
+            </div>
+            <!-- /.card-heading -->
+            <div class="card-body">
+                <table class="table" width="100%" cellspacing="0">
+                    <tbody>
+                        <?php foreach ($pesAktif as $key => $value) : ?>
+                            <tr>
+                                <th>Nama</th>
+                                <th>Instansi/Sekolah</th>
+                                <th>Mulai</th>
+                                <th>Selesai</th>
+                            </tr>
+                            <tr>
+                                <td><a href="/Pembimbing/detailPeserta/<?= $value['userId'] ?>"><i class="fa fa-user fa-fw"></i> <?= $value['nama']; ?></a></td>
+                                <td> <span class="text-muted small"><em><?= $value['instansi']; ?></em>
+                                    </span></td>
+                                <td> <span class="text-muted small"><em><?= $value['startDate']; ?></em>
+                                    </span></td>
+                                <td> <span class="text-muted small"><em><?= $value['endDate']; ?></em>
+                                    </span></td>
+                            </tr>
+                        <?php endforeach ?>
+                    </tbody>
+                </table>
+                <!-- /.list-group -->
+                <a href="/Pembimbing/dataPeserta" class="btn btn-default btn-block">Selengkapnya</a>
+            </div>
+        </div>
+
     </div>
+
 </div>
 <!-- /.container-fluid -->
 

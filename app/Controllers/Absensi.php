@@ -9,7 +9,7 @@ class Absensi extends BaseController
     public function index()
     {
         $absenModel = new AbsenModel();
-        $user = session()->id;
+        $user = session()->userId;
         $absen = $absenModel->where('user_id', $user)->get()->getResultArray();
 
         $data = [
