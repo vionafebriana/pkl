@@ -35,11 +35,11 @@ class Registrasi extends BaseController
                 ],
                 'startDate' => [
                     'rules' => 'required',
-                    'errors' => ['required' => 'Masukkan tanggal mulai magang']
+                    'errors' => ['required' => 'Masukkan tanggal mulai PKL']
                 ],
                 'endDate' => [
                     'rules' => 'required',
-                    'errors' => ['required' => 'Masukkan tanggal selesai magang']
+                    'errors' => ['required' => 'Masukkan tanggal selesai PKL']
                 ],
                 'pengantar' => [
                     'uploaded[pengantar]',
@@ -62,6 +62,7 @@ class Registrasi extends BaseController
                     ]
                 ],
             ])) {
+                session()->setFlashdata('failed', 'Maaf! Terdapat kesalahan dalam pengisian data.');
                 return redirect()->to(base_url('Registrasi'))->withInput();
             }
 

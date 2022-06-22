@@ -1,5 +1,5 @@
 <!-- Footer -->
-<footer class="sticky-footer bg-white">
+<footer class="sticky-footer bg-white shadow">
     <div class="container my-auto">
         <!-- Copyright -->
         <div class="copyright text-center my-auto">
@@ -32,19 +32,25 @@
 <script src="/assets/js/sb-admin-2.min.js"></script>
 
 <!-- Page level custom scripts -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 <script src="/assets/js/tabel-laporan.js"></script>
+<script src="/assets/js/tabel-aktivitas.js"></script>
 <script src="/assets/js/tabel-peserta.js"></script>
-<script src="/assets/js/clock.js"></script>
 <script src="/assets/kalender/main.js"></script>
 <script src="/assets/js/absen.js"></script>
 <script src="/assets/js/tab-pembimbing.js"></script>
-<script src="/assets/js/alert.js"></script>
-<script type="text/javascript" charset="utf8" src="https://releases.jquery.com/git/jquery-3.x-git.js"></script>
+<script src="/assets/js/alert/alert.js"></script>
+<script src="/assets/js/piechart.js"></script>
 <script type="text/javascript" charset="utf8" src="/assets/js/datatables-demo.js"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 <script>
     $(document).ready(function() {
         $('#dataTable2').DataTable();
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('#dataTable1').DataTable();
     });
 </script>
 

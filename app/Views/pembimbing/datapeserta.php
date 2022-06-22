@@ -4,6 +4,7 @@
     <!-- Tabel data peserta -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
+            <h4 class="font-weight-bold">Data Peserta PKL</h4>
             <ul class="nav nav-pills nav-fill">
                 <li class="nav-item">
                     <a class="nav-link active font-weight-bold" aria-current="page" href="#" id="pendaftar">Pendaftar</a>
@@ -42,9 +43,9 @@
                                 <td><?= $value['startDate']; ?></td>
                                 <td><?= $value['endDate']; ?></td>
                                 <td class="text-center flex">
-                                    <a href="/Pembimbing/terimaPeserta/<?= $value['userId'] ?>"><i class="fa fa-check"></i></a>
+                                    <a href="/Pembimbing/terimaPeserta/<?= $value['userId'] ?>" onclick="return confirm('Apakah anda yakin?')" class="btn btn-success"><i class="fa fa-check"></i></a>
                                     <b>|</b>
-                                    <a href="/Pembimbing/hapusPeserta/<?= $value['userId'] ?>"><i class="fa fa-times"></i></a>
+                                    <a href="/Pembimbing/hapusPeserta/<?= $value['userId'] ?>" onclick="return confirm('Apakah anda yakin? Anda tidak akan dapat memulihkan file!')" class="btn btn-danger"><i class="fa fa-times"></i></a>
                                 </td>
                             </tr>
                         <?php endforeach ?>

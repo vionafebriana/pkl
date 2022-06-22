@@ -14,12 +14,11 @@ class AbsenModel extends Model
     protected $returnType     = 'array';
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['user_id', 'datang', 'pulang', 'date'];
+    protected $allowedFields = ['user_id', 'datang', 'pulang', 'date', 'latitude', 'longitude'];
 
     protected $useTimestamps = true;
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
-    protected $deletedField  = 'deleted_at';
 
     protected $validationRules    = [];
     protected $validationMessages = [];

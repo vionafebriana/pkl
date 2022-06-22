@@ -5,7 +5,7 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h1 class="h3 mb-2 text-gray-800">Laporan Aktivitas Harian</h1>
+            <h4 class="font-weight-bold">Laporan Aktivitas Harian</h4>
             <ul class="nav nav-pills nav-fill">
                 <li class="nav-item">
                     <a class="nav-link active  font-weight-bold" aria-current="page" href="#" id="belumsetuju">Belum Disetujui</a>
@@ -74,11 +74,11 @@
                 </table>
             </div>
         </div>
-
-
-
     </div>
-    <!-- /.container-fluid -->
+
+
+</div>
+<!-- /.container-fluid -->
 
 </div>
 <!-- End of Main Content -->

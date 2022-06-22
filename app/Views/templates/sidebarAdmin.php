@@ -1,12 +1,12 @@
 <!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #508b90;">
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/Admin">
         <div class="sidebar-brand-icon rotate-n-15">
             <img style="width:50px" src="/assets/img/logobps.png" alt="Logo">
         </div>
-        <div class="sidebar-brand-text mx-1">SIMAG BPS KOTA MALANG</div>
+        <div class="sidebar-brand-text mx-1">PKL BPS KOTA MALANG</div>
     </a>
 
     <!-- Divider -->
@@ -61,12 +61,19 @@
 
     <!-- Divider -->
     <hr class="sidebar-divider">
-    <li class="nav-item">
-        <a class="nav-link">
-            <i class="nav-icon fas fa-sign-out-alt"></i>
-            Keluar
-        </a>
-    </li>
+    <?php if (!session()->log) : ?>
+        <li class="nav-item">
+            <a class="nav-link" href="<?= base_url('AuthGoogle'); ?>">
+                <i class="nav-icon fas fa-sign-out-alt"></i> Login
+            </a>
+        </li>
+    <?php else : ?>
+        <li class="nav-item">
+            <a class="nav-link" href="<?= base_url('AuthGoogle/logout'); ?>">
+                <i class="nav-icon fas fa-sign-out-alt"></i> Keluar
+            </a>
+        </li>
+    <?php endif ?>
 
 </ul>
 <!-- End of Sidebar -->

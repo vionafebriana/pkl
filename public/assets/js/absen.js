@@ -8,6 +8,16 @@
         )
     })
 
+    function isbeetweentwotime(startTime, endTime) {
+        var d = new Date();
+        var n = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+        if (n >= startTime && n <= endTime) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     dataAbsen = {}
     setInterval(() => {
         $.get(
@@ -19,27 +29,12 @@
                     }else{
                         globalThis.dataAbsen = data
                         $('#start-time').html(data['datang'])
-                        $('#end-time').html(data['pulang'])
-
-                        pagi = isbeetweentwotime('00:00:00', '16:00:00')
-                        if(pagi){
-                            if(data.datang=="00:00:00"){
-                                $('#message').html("anda belum absen pagi")
-                            }else{
-                                $('#message').html("anda sudah absen pagi")
-                            }
-                        }else{
-                            if(data.pulang=="00:00:00"){
-                                $('#message').html("anda belum absen sore")
-                            }else{
-                                $('#message').html("anda sudah absen sore")
-                            }
-                        }
+                        $('#end-time').html(data['pulang'])        
                     }
                 }else{
                         $('#start-time').html(data['datang'])
                         $('#end-time').html(data['pulang'])
-                        $('#message').html('Anda belum absen')
+                        $('#message').html('Anda sudah absen')
                 }
             }
         )

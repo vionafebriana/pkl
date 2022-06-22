@@ -1,14 +1,21 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <?php $val = Service('validation'); ?>
-    <div class="row">
+    <div class="row m-2">
         <div class="col">
-            <div class="card card-olive">
+            <div class="card card-olive shadow">
                 <div class="card-header">
                     <h3 class="card-title">Ubah Data Pembimbing</h3>
                 </div>
                 <div class="card-body">
-                    <form action="" enctype="multipart/form-data" method="POST">
+                    <!-- display flash data message -->
+                    <?php
+                    if (session()->getFlashdata('failed')) : ?>
+                        <div class="alert alert-danger">
+                            <?= session()->getFlashdata('failed') ?>
+                        </div>
+                    <?php endif; ?>
+                    <form action="/Admin/editPembimbing/<?= $id; ?>" enctype="multipart/form-data" method="POST">
                         <div class="form-group">
                             <label for="nama">nama</label><small class="text-danger">*</small>
                             <input type="nama" name="nama" class="form-control" id="nama" value="<?= $nama; ?>">
@@ -46,6 +53,8 @@
     </div>
 </div>
 <!-- /.container-fluid -->
-
+<script>
+    $('.alert').delay(5000).slideUp('slow');
+</script>
 </div>
 <!-- End of Main Content -->

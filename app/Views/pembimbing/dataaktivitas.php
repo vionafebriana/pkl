@@ -3,7 +3,7 @@
     <!-- Tabel Laporan Aktivitas Harian -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h1 class="h3 mb-2 text-gray-800">Laporan Aktivitas Harian</h1>
+            <h4 class="font-weight-bold">Laporan Aktivitas Harian</h4>
             <ul class="nav nav-pills nav-fill">
                 <li class="nav-item">
                     <a class="nav-link active font-weight-bold" aria-current="page" href="#" id="belumsetuju">Belum Disetujui</a>
@@ -41,9 +41,8 @@
                                 <td><?= $value['selesai']; ?></td>
                                 <td><?= $value['keterangan']; ?></td>
                                 <td class="text-center flex">
-                                    <a href="/Pembimbing/terimaAktivitas/<?= $value['acid'] ?>"><i class="fa fa-check"></i></a>
-                                    <b>|</b>
-                                    <a href="/Pembimbing/hapusAktivitas/<?= $value['acid'] ?>"><i class="fa fa-times"></i></a>
+                                    <a href="/Pembimbing/terimaAktivitas/<?= $value['acid'] ?>" onclick="return confirm('Apakah anda yakin?')" class="btn btn-success"><i class="fa fa-check"></i></a>
+                                    <a href="/Pembimbing/hapusAktivitas/<?= $value['acid'] ?>" onclick="return confirm('Apakah anda yakin? Anda tidak akan dapat memulihkan file!')" class="btn btn-danger"><i class="fa fa-times"></i></a>
                                 </td>
                             </tr>
                         <?php endforeach ?>

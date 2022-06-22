@@ -6,19 +6,15 @@
                 <div class="p-5">
                     <!-- display flash data message -->
                     <?php
-                    if (session()->getFlashdata('success')) : ?>
-                        <div class="alert alert-success alert-dismissible">
-                            <?php echo session()->getFlashdata('success') ?>
-                        </div>
-                    <?php elseif (session()->getFlashdata('failed')) : ?>
-                        <div class="alert alert-danger alert-dismissible">
+                    if (session()->getFlashdata('failed')) : ?>
+                        <div class="alert alert-danger">
                             <?php echo session()->getFlashdata('failed') ?>
                         </div>
                     <?php endif; ?>
                     <div class="text-center">
-                        <h1 class="h4 text-gray-900 mb-4">Pendaftaran Magang!</h1>
+                        <h1 class="h4 text-gray-900 mb-4">Pendaftaran PKL!</h1>
                     </div>
-                    <form class="user" action="" enctype="multipart/form-data" method="POST">
+                    <form class="user" action="" enctype="multipart/form-data" method="POST" onSubmit="return confirm('Apakah anda yakin? Pastikan data yang diisi sudah benar');">
                         <div class="form-group">
                             <label for="inputNama">Nama</label><small class="text-danger">*</small><br>
                             <input type="text" class="form-control " id="inputNama" placeholder="Nama Lengkap" name="nama">
@@ -64,13 +60,15 @@
                             <label for="inputSuratPengantar">Dokumen Surat Pengantar</label><small class="text-danger">*</small><br>
                             <input type="file" id="inputSuratPengantar" placeholder="Dokumen Surat Pengantar" name="pengantar">
                             <?= ($val->hasError('pengantar')) ? '<small class="text-danger">' . $val->getError('pengantar') . '</small>' : ''; ?>
+                            <small><em><br>format pdf & ukuran maksimal 10MB</em></small>
                         </div>
                         <div class="form-group">
                             <label for="inputProposal">Dokumen Proposal</label><small class="text-danger">*</small><br>
                             <input type="file" id="inputProposal" placeholder="Dokumen Proposal" name="proposal">
                             <?= ($val->hasError('proposal')) ? '<small class="text-danger">' . $val->getError('proposal') . '</small>' : ''; ?>
+                            <small><em><br>format pdf & ukuran maksimal 10MB</em></small>
                         </div>
-                        <button class="btn btn-primary btn-user btn-block" name="submit" type="submit">
+                        <button class="btn btn-primary" name="submit" type="submit">
                             Ajukan Pendaftaran
                         </button>
                     </form>
@@ -80,3 +78,6 @@
     </div>
 
 </div>
+<script>
+    $('.alert').delay(5000).slideUp('slow');
+</script>

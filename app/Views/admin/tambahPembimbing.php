@@ -1,23 +1,37 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <?php $val = Service('validation'); ?>
-    <div class="row">
+    <div class="row m-2">
         <div class="col">
-            <div class="card card-olive">
+            <div class="card card-olive shadow">
                 <div class="card-header">
                     <h3 class="card-title">Masukkan Data Pembimbing</h3>
                 </div>
                 <div class="card-body">
-                    <form action="" enctype="multipart/form-data" method="POST">
+                    <!-- display flash data message -->
+                    <?php
+                    if (session()->getFlashdata('failed')) : ?>
+                        <div class="alert alert-danger">
+                            <?php echo session()->getFlashdata('failed') ?>
+                        </div>
+                    <?php endif; ?>
+                    <form action="" enctype="multipart/form-data" method="POST" onSubmit="return confirm('Apakah anda yakin? Pastikan data yang diisi sudah benar');">
                         <div class="form-group">
-                            <label for="nama">nama</label><small class="text-danger">*</small>
+                            <label for="nama">Nama</label><small class="text-danger">*</small>
                             <input type="nama" name="nama" class="form-control" id="nama">
                             <?= ($val->hasError('nama')) ? '<small class="text-danger">' . $val->getError('nama') . '</small>' : ''; ?>
                         </div>
                         <div class="form-group">
-                            <label for="email">email</label><small class="text-danger">*</small>
+                            <label for="email">Email</label><small class="text-danger">*</small>
                             <input type="email" name="email" class="form-control" id="email">
                             <?= ($val->hasError('email')) ? '<small class="text-danger">' . $val->getError('email') . '</small>' : ''; ?>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputRole">Peran</label><small class="text-danger">*</small>
+                            <select class="form-control" id="inputRole" placeholder="Peran" name="role">
+                                <option value="2">Pembimbing</option>
+                                <option value="1">Admin</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="inputJK">Jenis Kelamin</label><small class="text-danger">*</small>
@@ -32,7 +46,7 @@
                             <?= ($val->hasError('tglLahir')) ? '<small class="text-danger">' . $val->getError('tglLahir') . '</small>' : ''; ?>
 
                         </div>
-                        <button type="submit" name="submit" class="btn btn-primary">Simpan</button>
+                        <button type="submit" name="submit" class="btn btn-primary">Tambah</button>
                     </form>
                 </div>
                 <!-- /.card-body -->
@@ -44,3 +58,6 @@
 
 </div>
 <!-- End of Main Content -->
+<script>
+    $('.alert').delay(5000).slideUp('slow');
+</script>

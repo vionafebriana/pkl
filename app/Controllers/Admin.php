@@ -5,11 +5,16 @@ namespace App\Controllers;
 use App\Models\UserModel;
 use App\Models\AbsenModel;
 use App\Models\AktivitasModel;
+use CodeIgniter\API\ResponseTrait;
+use App\Models\InfoPesertaModel;
 
 class Admin extends BaseController
 {
+    use ResponseTrait;
+
     public function index()
     {
+        $aktivitasModel = new AktivitasModel();
         $userModel = new UserModel();
         $pesertaAktif = $userModel->where('role', 3)->where('status', 1)->join('info_peserta', 'user.id=info_peserta.userId')
             ->where('info_peserta.endDate>', date('Y-m-d'))->countAllResults();
@@ -17,19 +22,23 @@ class Admin extends BaseController
             ->where('info_peserta.endDate<=', date('Y-m-d'))->countAllResults();
         $pendaftar = $userModel->where('role', 3)->where('status', 0)->countAllResults();
         $pembimbing = $userModel->where('role', 2)->countAllResults();
+        $admin = $userModel->where('role', 1)->countAllResults();
+        $belumsetuju = $aktivitasModel->select('aktivitas.id as acid, aktivitas.*,user.*')->join('user', 'aktivitas.userId=user.id')->where('aktivitas.status', 0)->countAllResults();
 
         $data = [
             'pesertaAktif' => $pesertaAktif,
             'pesertaDeaktif' => $pesertaDeaktif,
             'pembimbing' => $pembimbing,
-            'pendaftar' => $pendaftar
+            'pendaftar' => $pendaftar,
+            'belumsetuju' => $belumsetuju,
+            'admin' => $admin
         ];
 
 
         echo view('templates/header', $data);
         echo view('templates/sidebarAdmin');
         echo view('templates/topbar');
-        echo view('index/admin');
+        echo view('admin/admin');
         echo view('templates/footer');
     }
 
@@ -37,7 +46,7 @@ class Admin extends BaseController
     public function dataPembimbing()
     {
         $userModel = new UserModel();
-        $detail = $userModel->where('role', 2)->get()->getResultArray();
+        $detail = $userModel->where('role', 1)->orWhere('role', 2)->get()->getResultArray();
 
         $data = [
             'detail' => $detail
@@ -52,7 +61,7 @@ class Admin extends BaseController
 
     public function tambahPembimbing()
     {
-        $user = session()->id;
+        $user = session()->userId;
         if (isset($_POST['submit'])) {
             if (!$this->validate([
                 'nama' => [
@@ -61,6 +70,9 @@ class Admin extends BaseController
                 'JK' => [
                     'rules' => 'required', 'errors' => ['required' => 'Jenis Kelamin harus diisi']
                 ],
+                'role' => [
+                    'rules' => 'required', 'errors' => ['required' => 'Peran harus diisi']
+                ],
                 'tglLahir' => [
                     'rules' => 'required', 'errors' => ['required' => 'tanggal lahir harus diisi']
                 ],
@@ -68,6 +80,7 @@ class Admin extends BaseController
                     'required', 'valid_email', 'errors' => ['required' => 'email harus diisi', 'valid_email' => 'email tidak valid']
                 ]
             ])) {
+                session()->setFlashdata('failed', 'Maaf! Terdapat kesalahan dalam pengisian data.');
                 return redirect()->to(base_url('Admin/tambahPembimbing'))->withInput();
             }
 
@@ -76,11 +89,12 @@ class Admin extends BaseController
                 'jenisKelamin' => $this->request->getPost('JK'),
                 'tglLahir' => $this->request->getPost('tglLahir'),
                 'email' => $this->request->getPost('email'),
-                'role' => 2,
+                'role' => $this->request->getPost('role'),
                 'status' => 1
             ];
             $userModel = new UserModel();
             $userModel->save($data);
+            session()->setFlashdata('success', 'Sukses! Anda berhasil menambahkan data.');
             return redirect()->to(base_url('Admin/dataPembimbing'));
         }
         echo view('templates/header');
@@ -109,19 +123,20 @@ class Admin extends BaseController
                     'required', 'valid_email', 'errors' => ['required' => 'email harus diisi', 'valid_email' => 'email tidak valid']
                 ]
             ])) {
-                return redirect()->to(base_url('Admin/editPembimbing'))->withInput();
+                session()->setFlashdata('failed', 'Maaf! Terdapat kesalahan dalam pengisian data.');
+                return redirect()->to(base_url('Admin/editPembimbing/' . $id))->withInput();
             }
             $data = [
                 'nama' => $this->request->getPost('nama'),
                 'jenisKelamin' => $this->request->getPost('JK'),
                 'tglLahir' => $this->request->getPost('tglLahir'),
                 'email' => $this->request->getPost('email'),
-                'role' => 2,
-                'status' => 1
             ];
             $userModel->update($id, $data);
+            session()->setFlashdata('success', 'Sukses! Anda berhasil mengubah data.');
             return redirect()->to(base_url('Admin/dataPembimbing'));
         }
+
         echo view('templates/header', $data);
         echo view('templates/sidebarAdmin');
         echo view('templates/topbar');
@@ -195,7 +210,7 @@ class Admin extends BaseController
     public function dataAbsen()
     {
         $absenModel = new AbsenModel();
-        $absen = $absenModel->join('user', 'absen.user_id=user.id')->get()->getResultArray();
+        $absen = $absenModel->select('absen.id as acid, absen.*,user.*')->join('user', 'absen.user_id=user.id')->get()->getResultArray();
 
         $data = [
             'absen' => $absen
@@ -208,6 +223,29 @@ class Admin extends BaseController
         echo view('templates/footer');
     }
 
+    public function detailAbsen($id)
+    {
+        $absenModel = new AbsenModel();
+        $absen = $absenModel->where('id', $id)->first();
+        $data = [
+            'absen' => $absen
+        ];
+        echo view('templates/header', $data);
+        echo view('templates/sidebarAdmin');
+        echo view('templates/topbar');
+        echo view('admin/detailAbsen.php');
+        echo view('templates/footer');
+    }
+
+    public function getAbsenKoordinat($id)
+    {
+        $absenModel = new AbsenModel();
+        $respond = $absenModel->where('id', $id)->get()->getRowArray();
+        if ($respond) {
+            return $this->respond($respond);
+        }
+        return $this->respond([]);
+    }
     // Data Laporan Aktivitas Harian
     public function dataAktivitas()
     {
@@ -224,6 +262,33 @@ class Admin extends BaseController
         echo view('templates/sidebarAdmin');
         echo view('templates/topbar');
         echo view('admin/dataaktivitas.php');
+        echo view('templates/footer');
+    }
+    // Buka file proposal
+    public function bukaProposal($id)
+    {
+        $infoPeserta = new InfoPesertaModel();
+        $file = $infoPeserta->where('id', $id)->get()->getRow();
+        $data = [
+            'link' => $file->proposal
+        ];
+        echo view('templates/header', $data);
+        echo view('templates/topbar');
+        echo view('templates/file.php');
+        echo view('templates/footer');
+    }
+
+    // Buka file pengantar
+    public function bukaPengantar($id)
+    {
+        $infoPeserta = new InfoPesertaModel();
+        $file = $infoPeserta->where('id', $id)->get()->getRow();
+        $data = [
+            'link' => $file->pengantar
+        ];
+        echo view('templates/header', $data);
+        echo view('templates/topbar');
+        echo view('templates/file.php');
         echo view('templates/footer');
     }
 }

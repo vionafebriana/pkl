@@ -1,6 +1,6 @@
 #clock {
   font-family: "Orbitron", sans-serif;
-  color: darkcyan;
+  color: #508b90;
   font-size: 56px;
   text-align: center;
   padding-top: 40px;
@@ -23,7 +23,7 @@
 
 .base-timer__path-elapsed {
   stroke-width: 3px;
-  stroke: darkslateblue;
+  stroke: #508b90;
 }
 
 .base-timer__path-remaining {

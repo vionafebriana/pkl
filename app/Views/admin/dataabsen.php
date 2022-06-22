@@ -2,11 +2,10 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Absensi</h1>
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Absensi</h6>
+            <h4 class="font-weight-bold">Absensi</h4>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -18,6 +17,8 @@
                             <th>Tanggal</th>
                             <th>Jam Masuk</th>
                             <th>Jam Selesai</th>
+                            <th>Keterangan</th>
+                            <th>Detail</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -30,6 +31,8 @@
                                 <td><?= $value['date']; ?></td>
                                 <td><?= $value['datang']; ?></td>
                                 <td><?= $value['pulang']; ?></td>
+                                <td><?= ($value['datang'] > '07:30:00' ? 'Terlambat' : 'Hadir'); ?></td>
+                                <td><a class="btn btn-primary" href="/Admin/detailAbsen/<?= $value['acid']; ?>" id="<?= $value['id']; ?>"> <i class="fa fa-eye"></i></a></td>
                             </tr>
                         <?php endforeach ?>
                     </tbody>

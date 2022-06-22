@@ -5,6 +5,7 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
+            <h4 class="font-weight-bold">Data Peserta PKL</h4>
             <ul class="nav nav-pills nav-fill">
                 <li class="nav-item">
                     <a class="nav-link active font-weight-bold" aria-current="page" href="#" id="pendaftar">Pendaftar</a>
@@ -42,9 +43,8 @@
                                 <td><?= $value['startDate']; ?></td>
                                 <td><?= $value['endDate']; ?></td>
                                 <td class="text-center flex">
-                                    <a href="/Admin/terimaPeserta/<?= $value['userId'] ?>"><i class="fa fa-check"></i></a>
-                                    <b>|</b>
-                                    <a href="/Admin/hapusPeserta/<?= $value['userId'] ?>"><i class="fa fa-times"></i></a>
+                                    <a href="/Admin/terimaPeserta/<?= $value['userId'] ?>" onclick="return confirm('Apakah anda yakin?')" class="btn btn-success"><i class="fa fa-check"></i></a>
+                                    <a href="/Admin/hapusPeserta/<?= $value['userId'] ?>" onclick="return confirm('Apakah anda yakin? Anda tidak akan dapat memulihkan file!')" class="btn btn-danger"><i class="fa fa-times"></i></a>
                                 </td>
                             </tr>
                         <?php endforeach ?>
@@ -75,7 +75,7 @@
                                 <td><?= $value['startDate']; ?></td>
                                 <td><?= $value['endDate']; ?></td>
                                 <td class="text-center flex">
-                                    <a href="/Admin/hapusPeserta/<?= $value['userId'] ?>"><i class="fa fa-trash"></i></a>
+                                    <a href="/Admin/hapusPeserta/<?= $value['userId'] ?>" onclick="return confirm('Apakah anda yakin? Anda tidak akan dapat memulihkan file!')" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
                         <?php endforeach ?>
@@ -112,9 +112,9 @@
         </div>
 
 
-
     </div>
-    <!-- /.container-fluid -->
+</div>
+<!-- /.container-fluid -->
 
 </div>
 <!-- End of Main Content -->

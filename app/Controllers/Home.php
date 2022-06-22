@@ -33,4 +33,19 @@ class Home extends BaseController
         //kirim ke js
         return $this->respond($user);
     }
+
+    public function getUser()
+    {
+        $userModel = new UserModel();
+        $peserta = $userModel->join('info_peserta', 'user.id=info_peserta.userId')->where('status', 1)->where('info_peserta.endDate>', date('Y-m-d'))->countAllResults();
+        $all = $userModel->join('info_peserta', 'user.id=info_peserta.userId')->where('info_peserta.endDate>', date('Y-m-d'))->get()->getResultArray();
+        $pendaftar = $userModel->join('info_peserta', 'user.id=info_peserta.userId')->where('status', 0)->where('info_peserta.endDate>', date('Y-m-d'))->countAllResults();
+        $data = [
+            'peserta' => $peserta,
+            'all' => $all,
+            'pendaftar' => $pendaftar
+        ];
+        //kirim ke js
+        return $this->respond($data);
+    }
 }
