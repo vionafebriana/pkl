@@ -12,48 +12,57 @@ class Registrasi extends BaseController
         if (!session()->regist) {
             return redirect()->to(base_url('Home'));
         }
-        $data = [
-            'judul' => 'PENDAFTARAN PKL'
-        ];
 
         if (isset($_POST['submit'])) {
             // validasi pendaftaran    
             if (!$this->validate([
                 'nama' => [
                     'rules' => 'required',
-                    'errors' => [
-                        'required' => 'nama harus diisi'
-                    ]
+                    'errors' => ['required' => 'Masukkan nama lengkap Anda']
                 ],
                 'JK' => [
                     'rules' => 'required',
-                    'errors' => [
-                        'required' => 'Jenis Kelamin harus diisi'
-                    ]
+                    'errors' => ['required' => 'Masukkan jenis kelamin Anda']
                 ],
                 'tglLahir' => [
                     'rules' => 'required',
-                    'errors' => [
-                        'required' => 'tanggal lahir harus diisi'
-                    ]
+                    'errors' => ['required' => 'Masukkan tanggal lahir Anda']
                 ],
                 'email'    => 'required|valid_email',
                 'instansi'    => [
                     'rules' => 'required',
-                    'errors' => [
-                        'required' => 'instansi/sekolah asal harus diisi'
-                    ]
+                    'errors' => ['required' => 'Masukkan asal instansi/sekolah Anda']
                 ],
                 'startDate' => [
                     'rules' => 'required',
+                    'errors' => ['required' => 'Masukkan tanggal mulai PKL']
+                ],
+                'endDate' => [
+                    'rules' => 'required',
+                    'errors' => ['required' => 'Masukkan tanggal selesai PKL']
+                ],
+                'pengantar' => [
+                    'uploaded[pengantar]',
+                    'mime_in[pengantar,application/pdf,application/zip,application/msword,application/x-tar]',
+                    'max_size[pengantar,10000]',
                     'errors' => [
-                        'required' => 'tanggal mulai harus diisi'
+                        'uploaded' => 'Anda belum memilih file',
+                        'mime_in' => 'Format file harus berupa pdf',
+                        'max_size' => 'Ukuran maksimal file 10MB'
                     ]
                 ],
-                'endDate' => 'required',
-                'pengantar' => 'uploaded[pengantar]',
-                'proposal' => 'uploaded[proposal]',
+                'proposal' => [
+                    'uploaded[proposal]',
+                    'mime_in[proposal,application/pdf,application/zip,application/msword,application/x-tar]',
+                    'max_size[proposal,10000]',
+                    'errors' => [
+                        'uploaded' => 'Anda belum memilih file',
+                        'mime_in' => 'Format file harus berupa pdf',
+                        'max_size' => 'Ukuran maksimal file 10MB'
+                    ]
+                ],
             ])) {
+                session()->setFlashdata('failed', 'Maaf! Terdapat kesalahan dalam pengisian data.');
                 return redirect()->to(base_url('Registrasi'))->withInput();
             }
 
@@ -62,9 +71,8 @@ class Registrasi extends BaseController
                 'jenisKelamin' => $this->request->getPost('JK'),
                 'tglLahir' => $this->request->getPost('tglLahir'),
                 'email' => $this->request->getPost('email'),
-                'password' => $this->request->getPost('password'),
                 'role' => 3,
-                'status' => 1
+                'status' => 0
             ];
             $userModel = new UserModel();
             $userModel->save($user);
@@ -74,26 +82,24 @@ class Registrasi extends BaseController
             $proposal = $this->request->getFile('proposal');
             $nama_pengantar = $pengantar->getName();
             $nama_proposal = $proposal->getName();
-
+            //Menyimpan file yang diupload kedalam file assets
+            $pengantar->move('./assets/dokumen pengantar/' . $user_id, $nama_pengantar);
+            $proposal->move('./assets/dokumen proposal/' . $user_id, $nama_proposal);
             $info_peserta = [
                 'instansi' => $this->request->getPost('instansi'),
                 'startDate' => $this->request->getPost('startDate'),
                 'endDate' => $this->request->getPost('endDate'),
                 'userId' => $user_id,
-                'pengantar' => $nama_pengantar,
-                'proposal' => $nama_proposal
+                'pengantar' => '/assets/dokumen pengantar/' . $user_id . '/' . $nama_pengantar,
+                'proposal' => '/assets/dokumen proposal/' . $user_id . '/' . $nama_proposal
             ];
-
-            //Menyimpan file yang diupload kedalam file assets
-            $pengantar->move('./assets/dokumen pengantar/', $nama_pengantar);
-            $proposal->move('./assets/dokumen proposal/', $nama_proposal);
 
             $infoPesertaModel = new InfoPesertaModel();
             $infoPesertaModel->save($info_peserta);
-            session()->destroy();
+            session()->setFlashdata('success', 'Sukses! Anda berhasil melakukan pendaftaran.');
             return redirect()->to(base_url('Home'));
         }
-        echo view('templates/header', $data);
+        echo view('templates/header');
         echo view('auth/registrasi');
     }
 }

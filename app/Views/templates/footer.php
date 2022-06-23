@@ -1,5 +1,5 @@
 <!-- Footer -->
-<footer class="sticky-footer bg-white">
+<footer class="sticky-footer bg-white shadow">
     <div class="container my-auto">
         <!-- Copyright -->
         <div class="copyright text-center my-auto">
@@ -11,10 +11,8 @@
         </div>
 </footer>
 <!-- End of Footer -->
-
 </div>
 <!-- End of Content Wrapper -->
-
 </div>
 <!-- End of Page Wrapper -->
 
@@ -33,17 +31,34 @@
 <!-- Custom scripts for all pages-->
 <script src="/assets/js/sb-admin-2.min.js"></script>
 
-<!-- Page level plugins -->
-<script src="/assets/vendor/chart.js/Chart.min.js"></script>
-
 <!-- Page level custom scripts -->
-<script src="/assets/js/demo/chart-area-demo.js"></script>
-<script src="/assets/js/demo/chart-kuota.js"></script>
-<script src="/assets/js/demo/chart-kehadiran.js"></script>
-
-<script src="/assets/js/clock.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script src="/assets/js/tabel-laporan.js"></script>
+<script src="/assets/js/tabel-aktivitas.js"></script>
+<script src="/assets/js/tabel-peserta.js"></script>
+<script src="/assets/kalender/main.js"></script>
 <script src="/assets/js/absen.js"></script>
+<script src="/assets/js/tab-pembimbing.js"></script>
+<script src="/assets/js/alert/alert.js"></script>
+<script src="/assets/js/piechart.js"></script>
+<script type="text/javascript" charset="utf8" src="/assets/js/datatables-demo.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#dataTable2').DataTable();
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('#dataTable1').DataTable();
+    });
+</script>
 
+<script>
+    $(document).ready(function() {
+        $('#dataTable3').DataTable();
+    });
+</script>
 </body>
 
 </html>

@@ -3,6 +3,9 @@
 namespace Config;
 
 use App\Filters\AuthFilter;
+use App\Filters\FilterAdmin;
+use App\Filters\FilterPembimbing;
+use App\Filters\FilterPeserta;
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Filters\CSRF;
 use CodeIgniter\Filters\DebugToolbar;
@@ -24,7 +27,10 @@ class Filters extends BaseConfig
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
-        'auth'          => AuthFilter::class
+        'auth'          => AuthFilter::class,
+        'filteradmin' => FilterAdmin::class,
+        'filterpeserta' => FilterPeserta::class,
+        'filterpembimbing' => FilterPembimbing::class
     ];
 
     /**
@@ -35,12 +41,18 @@ class Filters extends BaseConfig
      */
     public $globals = [
         'before' => [
-            'auth' => ['except' => ['Home' , 'Home/*' , 'Registrasi' , 'Registrasi/*' , '' , 'Home' , 'AuthGoogle']]
+            'auth' => ['except' => ['Home', 'Home/*', 'Registrasi', 'Registrasi/*', '', 'Home', 'AuthGoogle']],
+            'filteradmin' => ['except' => ['Home', 'Home/*', 'Registrasi', 'Registrasi/*', '', 'Home', 'AuthGoogle']],
+            'filterpembimbing' => ['except' => ['Home', 'Home/*', 'Registrasi', 'Registrasi/*', '', 'Home', 'AuthGoogle']],
+            'filterpeserta' => ['except' => ['Home', 'Home/*', 'Registrasi', 'Registrasi/*', '', 'Home', 'AuthGoogle']],
             // 'honeypot',
             // 'csrf',
             // 'invalidchars',
         ],
         'after' => [
+            'filteradmin' => ['except' => ['Home', 'Home/*', 'Admin', 'Admin/*']],
+            'filterpembimbing' => ['except' => ['Home', 'Home/*', 'Pembimbing', 'Pembimbing/*']],
+            'filterpeserta' => ['except' => ['Home', 'Home/*', 'Peserta', 'Peserta/*']],
             'toolbar',
             // 'honeypot',
             // 'secureheaders',

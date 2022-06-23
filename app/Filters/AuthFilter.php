@@ -10,7 +10,7 @@ class AuthFilter implements FilterInterface
 {
     public function before(RequestInterface $request, $arguments = null)
     {
-        if(!session()->log){
+        if (!session()->log) {
             return redirect()->to(base_url(''));
         }
     }

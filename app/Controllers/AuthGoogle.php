@@ -27,11 +27,11 @@ class AuthGoogle extends BaseController
         $client->addScope('profile');
         $client->addScope('email');
 
-        if(isset($_GET['code'])){
+        if (isset($_GET['code'])) {
             $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
             $client->setAccessToken($token['access_token']);
             $service = new Google_Service_Oauth2($client);
-        }else{
+        } else {
             return redirect()->to($client->createAuthUrl());
         }
         $respond = [
@@ -40,14 +40,31 @@ class AuthGoogle extends BaseController
             'regist' => true
         ];
         $userModel = new UserModel();
-        $user = $userModel->where('email' , $respond['email'])->get()->getRowArray();
-        if($user){
-            if($user['status']==1){
+        $user = $userModel->join('info_peserta', 'user.id=info_peserta.userId','left')->where('email', $respond['email'])->get()->getRowArray();
+        if ($user) {
+            if ($user['status'] == 1) {
                 session()->set($user);
-                session()->set('log',true);
-                return redirect()->to(base_url(''));
+                session()->set('log', true);
+                session()->set('role', $user['role']);
+                switch ($user['role']) {
+                    case '1':
+                        return redirect()->to(base_url('Admin'));
+                        break;
+                    case '2':
+                        return redirect()->to(base_url('Pembimbing'));
+                        break;
+                    case '3':
+                        return redirect()->to(base_url('Peserta'));
+                        break;
+                    default:
+                        # code...
+                        break;
+                }
+            } else {
+                session()->setFlashdata('blmditerima', 'Akun anda sedang dalam proses peninjauan, periksa kembali lain kali!');
+                return redirect()->to(base_url('Home'));
             }
-        }else{
+        } else {
             session()->set($respond);
             return redirect()->to(base_url('Registrasi'));
         }

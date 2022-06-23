@@ -14,12 +14,11 @@ class InfoPesertaModel extends Model
     protected $returnType     = 'array';
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['instansi', 'startDate', 'endDate', 'pengantar', 'proposal', 'userId'];
+    protected $allowedFields = ['instansi', 'foto', 'startDate', 'endDate', 'pengantar', 'proposal', 'userId'];
 
     protected $useTimestamps = true;
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
-    protected $deletedField  = 'deleted_at';
 
     protected $validationRules    = [];
     protected $validationMessages = [];
